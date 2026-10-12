@@ -41,6 +41,7 @@
             margin-bottom: 10px;
             border: none;
             padding: 0;
+            color: var(--text-main);
         }
 
         .login-hint {
@@ -83,20 +84,31 @@
             <!-- Logo oficial de Altamar RolePlay -->
             <img src="https://cdn.discordapp.com/icons/1138972937727250472/ec8e4bc0cabd5a44d026473ccad75d79.png?size=2048" alt="Altamar RolePlay Logo" class="server-logo">
             
-            <h2>Altamar RolePlay - Informacion</h2>
+            <h2>Altamar RolePlay - Información</h2>
             
             <p class="login-hint">
-                Dentro de est web tendras accesos a todas las normativas del servidor y sus informaciones, Requerimos que leas atentamente cada zona para garantizar una experiencia de rol justa a todos los usuarios. 
+                Dentro de esta web tendrás acceso a todas las normativas del servidor y sus informaciones. Inicia sesión con Discord para verificar tu acceso a la comunidad.
             </p>
 
-            <!-- Botón de Continuar con Discord (Redirige a normativa.html) -->
-            <a href="normativa.html" class="btn-discord">
+            <!-- Botón de Continuar con Discord OAuth2 -->
+            <a href="#" id="loginBtn" class="btn-discord">
                 <svg viewBox="0 0 127.14 96.36">
                     <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6,5.4,80.21h0A105.73,105.73,0,0,0,39.79,96.27,77.77,77.77,0,0,0,48.1,81.3a68.63,68.63,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.69,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,8.31,14.95,105.25,105.25,0,0,0,34.41-16.06c8.11-26.23-3.05-50.08-19.14-66.1ZM42.45,65.69C36.18,65.69,31,60,31,53s5.18-12.72,11.45-12.72S53.9,46,53.88,53,48.72,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5.18-12.72,11.45-12.72S96.14,46,96.11,53,90.94,65.69,84.69,65.69Z"/>
                 </svg>
-                Acceder - Web       </a>
+                Acceder con Discord
+            </a>
         </div>
     </div>
 
+    <script>
+        const CLIENT_ID = '1548726840904917002'; 
+        const REDIRECT_URI = 'https://altrpcm.netlify.app/normativa';
+
+        document.getElementById('loginBtn').addEventListener('click', (e) => {
+            e.preventDefault();
+            const discordOAuthUrl = `https://discord.com/api/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&response_type=token&scope=identify%20guilds%20guilds.members.read`;
+            window.location.href = discordOAuthUrl;
+        });
+    </script>
 </body>
 </html>
