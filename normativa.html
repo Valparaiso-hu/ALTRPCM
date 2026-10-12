@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Normativa - Altamar RolePlay</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <style>
         .norm-section { display: none; }
         .norm-section.active { display: block; }
@@ -66,6 +66,26 @@
         .dropdown.show .dropdown-content {
             display: block;
         }
+
+        /* Botón blanco PDI - CARAB */
+        .btn-policial {
+            background-color: #ffffff;
+            color: #000000;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.1s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .btn-policial:hover {
+            background-color: #e2e8f0;
+        }
     </style>
 </head>
 <body>
@@ -93,6 +113,9 @@
 
             <li><a href="#">Tienda</a></li>
             <li><a href="#">Equipo</a></li>
+            
+            <!-- Botón Blanco PDI - CARAB -->
+            <li><a href="#" id="btnPdiCarab" class="btn-policial">PDI - CARAB</a></li>
         </ul>
     </header>
 
@@ -172,7 +195,7 @@
 
                 <div class="concept-item searchable-item">
                     <h3>Micrófono</h3>
-                    <p>Para rolear es importante que mantengas micrófono. En caso de que no lo tengas no podrás rolear en el servidor.</p>
+                    <p>Для rolear es importante que mantengas micrófono. En caso de que no lo tengas no podrás rolear en el servidor.</p>
                 </div>
             </div>
 
@@ -425,7 +448,7 @@
 
                 <div class="concept-item searchable-item">
                     <h3>CK Criminal</h3>
-                    <p>Los líderes de organizaciones ilegales pueden reservarse el derecho a realizar CK a uno de sus miembros siempre que lo vean necesario. En dicho caso, el CK deberá ser aceptado si aparece especificado en la normativa de la organización, lo cual implica que los miembros aceptan su posible muerte anticipadamente al ingresar. Esta especie de contrato debe estar reflejado en el propio hilo del grupo y, de este modo, será válido a efectos administrativos. De no ser así, no se podrá realizar CK por esta vía.</p>
+                    <p>Los líderes de organizaciones ilegales pueden reservarse el derecho a realizar CK a uno de sus miembros siempre que lo vean necesario. In dicho caso, el CK deberá ser aceptado si aparece especificado en la normativa de la organización, lo cual implica que los miembros aceptan su posible muerte anticipadamente al ingresar. Esta especie de contrato debe estar reflejado en el propio hilo del grupo y, de este modo, será válido a efectos administrativos. De no ser así, no se podrá realizar CK por esta vía.</p>
                 </div>
 
                 <div class="concept-item searchable-item">
@@ -463,7 +486,7 @@
         </content-area>
     </div>
 
-    <!-- Script de navegación y menú móvil -->
+    <!-- Script de navegación, validación de roles y menú móvil -->
     <script>
         const dropdownMenu = document.getElementById('dropdownMenu');
         const dropBtn = document.getElementById('dropBtn');
@@ -584,6 +607,59 @@
                 }
             }
         }
+
+        // ==========================================
+        // VALIDACIÓN DE ROLES PARA PDI - CARAB
+        // ==========================================
+        document.getElementById('btnPdiCarab').addEventListener('click', async (e) => {
+            e.preventDefault();
+
+            // 1. Obtener el token de acceso de la URL (hash que devuelve Discord OAuth)
+            const fragment = new URLSearchParams(window.location.hash.substring(1));
+            const accessToken = fragment.get('access_token');
+
+            if (!accessToken) {
+                alert('Debes iniciar sesión con Discord desde la página de inicio para acceder al panel policial.');
+                window.location.href = 'index.html';
+                return;
+            }
+
+            try {
+                // Roles permitidos
+                const rolesPermitidos = ['1528268801374814329', '1528268800577900654'];
+                // ID del servidor de Altamar RolePlay (debe configurarse el ID de tu server de Discord donde están los roles)
+                const GUILD_ID = '1138972937727250472'; // Cambia esto por el ID real de tu servidor de Discord
+
+                // 2. Consultar los datos del usuario en el servidor de Discord
+                const response = await fetch(`https://discord.com/api/users/@me/guilds/${GUILD_ID}/member`, {
+                    headers: {
+                        authorization: `Bearer ${accessToken}`
+                    }
+                });
+
+                if (!response.ok) {
+                    alert('No se pudo verificar tu membresía en el servidor de Discord o tu sesión expiró.');
+                    return;
+                }
+
+                const memberData = await response.json();
+                const userRoles = memberData.roles || [];
+
+                // 3. Validar si el usuario tiene al menos uno de los roles permitidos
+                const tieneAcceso = userRoles.some(roleId => rolesPermitidos.includes(roleId));
+
+                if (tieneAcceso) {
+                    // Si tiene el rol, redirige al panel policial
+                    window.location.href = 'policial.html';
+                } else {
+                    alert('Acceso denegado: No posees el rol requerido de PDI o Carabineros.');
+                }
+
+            } catch (error) {
+                console.error('Error al validar roles:', error);
+                alert('Ocurrió un error al verificar tus permisos de Discord.');
+            }
+        });
     </script>
 </body>
 </html>
