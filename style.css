@@ -65,6 +65,27 @@ header {
     color: var(--text-main);
 }
 
+/* Estilo para el botón blanco PDI - CARAB */
+.btn-policial {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+}
+
+.btn-policial:hover {
+    background-color: #e2e8f0 !important;
+    color: #000000 !important;
+}
+
 /* Botón de menú hamburguesa (para móviles) */
 .menu-toggle {
     display: none;
@@ -237,9 +258,7 @@ p {
         height: 60px;
     }
 
-    /* Oculta los enlaces fijos secundarios en móvil si es necesario, 
-       manteniendo el logo y el menú hamburguesa */
-    .nav-links li:not(.dropdown) {
+    .nav-links li:not(.dropdown):not(:has(.btn-policial)) {
         display: none; 
     }
 
