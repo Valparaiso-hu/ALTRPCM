@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Normativa - Altamar RolePlay</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .norm-section { display: none; }
+        .norm-section.active { display: block; }
+
+        /* Estilos para el menú desplegable superior */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropbtn {
+            background-color: transparent;
+            color: var(--text-muted);
+            border: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-family: inherit;
+            transition: color 0.2s;
+        }
+
+        .dropbtn:hover, .dropbtn.active {
+            color: var(--text-main);
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--bg-card);
+            min-width: 220px;
+            box-shadow: 0px 8px 24px rgba(0,0,0,0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            z-index: 1000;
+            padding: 8px 0;
+            margin-top: 10px;
+        }
+
+        .dropdown-content a {
+            color: var(--text-muted);
+            padding: 10px 18px;
+            text-decoration: none;
+            display: block;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .dropdown-content a:hover {
+            background-color: rgba(37, 99, 235, 0.15);
+            color: var(--text-main);
+        }
+
+        .dropdown.show .dropdown-content {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Barra de navegación superior -->
+    <header>
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <!-- Botón de menú para celulares -->
+            <button class="menu-toggle" id="menuBtn">☰</button>
+            <div class="logo-area">ALTAMAR ROLEPLAY COMMUNITY</div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Inicio</a></li>
+            
+            <!-- Menú Desplegable con redirección de páginas -->
+            <li class="dropdown" id="dropdownMenu">
+                <button class="dropbtn active" id="dropBtn">Normativas ▾</button>
+                <div class="dropdown-content">
+                    <a href="normativa.html">Normativas Generales</a>
+                    <a href="delictual.html">Normativa Delictual</a>
+                    <a href="concesionario.html">Concesionario</a>
+                    <a href="codigo-penal.html">Código Penal</a>
+                </div>
+            </li>
+
+            <li><a href="#">Tienda</a></li>
+            <li><a href="#">Equipo</a></li>
+        </ul>
+    </header>
+
+    <!-- Cuerpo principal -->
+    <div class="main-layout">
+        <!-- Sidebar lateral -->
+        <sidebar id="sidebarMenu">
+            <div class="sidebar-title" id="sidebarTitleCategory">Normativa Roleplay</div>
+            <ul class="sidebar-menu" id="menuLateral">
+                <!-- Se inyectarán dinámicamente según la categoría superior -->
+            </ul>
+        </sidebar>
+
+        <!-- Contenido principal -->
+        <content-area>
+            <div class="search-bar">
+                <input type="text" placeholder="Buscar normativa o concepto..." id="buscadorNormas">
+            </div>
+
+            <!-- ================= CATEGORÍA: NORMATIVAS GENERALES ================= -->
+            
+            <!-- SECCIÓN 1: PRESENTACIÓN -->
+            <div id="presentacion" class="norm-section active searchable-block" data-category="generales">
+                <h1>Presentación</h1>
+                <div class="meta-info">
+                    <span>🕒 Actualizado: Reciente</span>
+                    <span class="badge-vigente">🟢 Oficial y Vigente</span>
+                </div>
+
+                <h3>¿Quiénes Somos?</h3>
+                <p>Altamar Roleplay [ERLC] es una comunidad de roleplay chileno en la cual podrás vivir la vida de un ciudadano chileno promedio trabajando de lo que gustes, esto ya sea trabajando en una institución legal o realizando actos delictivos por toda la ciudad.</p>
+                
+                <p>Nosotros ofrecemos un bot con variados sistemas integrados, un staff activo la mayoría de tiempo para atenderte en lo que necesites. También contamos con liveries muy adaptadas a la vida real para dar una mejor experiencia de rol.</p>
+                
+                <h3>Documento</h3>
+                <p>Esta página fue creada para informar a todos los usuarios sobre las reglas del servidor. Requerimos que leas atentamente esta página ya que la mayoría de tus dudas se encuentra aquí.</p>
+            </div>
+
+            <!-- SECCIÓN 2: NORMATIVA DISCORD -->
+            <div id="discord" class="norm-section searchable-block" data-category="generales">
+                <h1>Normativa Discord</h1>
+                <div class="meta-info">
+                    <span>🕒 Actualizado: Reciente</span>
+                    <span class="badge-vigente">🟢 Oficial y Vigente</span>
+                </div>
+                <p style="margin-bottom: 25px;">Normativa de Discord de nuestra Comunidad para mantener un ambiente sano.</p>
+
+                <div class="concept-item searchable-item">
+                    <h3>Respeto</h3>
+                    <p>Es importante que mantengas un lenguaje adecuado dentro del servidor, ya que en él se encuentran niños pequeños y/o diferentes y las faltas de respeto las pueden afectar gravemente.</p>
+                </div>
+
+                <div class="concept-item searchable-item">
+                    <h3>Toxicidad</h3>
+                    <p>Es importante que seamos una comunidad sana y sin toxicidad, ya que esto podría afectar la reputación del servidor.</p>
+                </div>
+
+                <div class="concept-item searchable-item">
+                    <h3>Plagio</h3>
+                    <p>Esta normativa y todo lo perteneciente al servidor mantendrá derechos de autor. Esto indica que cualquier plagio del servidor y/o esta normativa será un motivo de blacklist del servidor.</p>
+                </div>
+
+                <div class="concept-item searchable-item">
+                    <h3>Privacidad</h3>
+                    <p>Dentro de los términos de whitelist de nuestro servidor se establece que está prohibida la filtración de datos de otros usuarios. Establecemos que incumplir estas normas puede llevar a un baneo del servidor.</p>
+                </div>
+
+                <div class="concept-item searchable-item">
+                    <h3>Spam</h3>
+                    <p>Está prohibido realizar spam al MD a otros usuarios sobre este servidor y está prohibido promocionar otros servidores en esta comunidad.</p>
+                </div>
+
+                <div class="concept-item searchable-item">
+                    <h3>Contenido Inapropiado</h3>
+                    <p>Está completamente prohibido enviar contenido inapropiado a este servidor. Realizar esta acción conlleva a un baneo.</p>
+                </div>
+
+                <div class="concept-item searchable-item">
+                    <h3>Micrófono</h3>
+                    <p>Para rolear es importante que mantengas micrófono. En caso de que no lo tengas no podrás rolear en el servidor.</p>
+                </div>
+            </div>
+
+            <!-- SECCIÓN 3: CONCEPTOS DE ROLEPLAY -->
+            <div id="conceptos" class="norm-section searchable-block" data-category="generales">
+                <h1>Conceptos de RolePlay</h1>
+                <div class="meta-info">
+                    <span>🕒 Actualizado: Reciente</span>
+                    <span class="badge-vigente">🟢 Oficial y Vigente</span>
+                </div>
+                <p style="margin-bottom: 25px;">Glosario oficial de conceptos técnicos e interpretativos aplicados en Altamar RolePlay.</p>
+
+                <div class="concept-item searchable-item">
+                    <h3>In Character (IC)</h3>
+                    <p>Significa "Dentro de rol". Se refiere a todas las acciones, vivencias, diálogos y situaciones que experimenta directamente tu personaje dentro del mundo del juego.</p>
+                </div>
+                <div class="concept-item searchable-item">
+                    <h3>Out Of Character (OOC)</h3>
+                    <p>Significa "Fuera de rol". Son todas las acciones, conversaciones e interacciones que tienen lugar fuera de la vida de nuestro personaje o fuera del entorno de juego.</p>
+                </div>
+                <div class="concept-item searchable-item">
+                    <h3>Power Gaming (PG)</h3>
+                    <p>Este concepto se refleja al llevar a cabo acciones que resulten completamente imposibles en la vida real, sin importar las condiciones en las que nos encontremos.</p>
+                </div>
+                <div class="concept-item searchable-item">
+                    <h3>Power Gaming 2 (PG2)</h3>
+                    <p>Se define como evadir o forzar un rol a beneficio personal.</p>
+                </div>
+                <div class="concept-item searchable-item">
+                    <h3>Meta Gaming (MG)</h3>
+                    <p>Este concepto se define por adquirir información desde un medio Out of Character (OOC) con el propósito de obtener ventaja y/o beneficio en el desarrollo de tu personaje de manera In Character (IC).</p>
+                </div>
+                <div class="concept-item searchable-item">
+                    <h3>Meta Gaming 2 (MG2)</h3>
+                    <p>Se define cómo la confusión de canales IC y OOC.</p>
+                </div>
+                <div class="concept-item searchable-item">
+                    <h3>-/me</h3>
+                    <p>Se utiliza para llevar a cabo acciones dentro del personaje cuando no contamos con las animaciones para realizarlas. Cabe mencionar que el -/ME solo debe usarse para describir las acciones del personaje y nunca para los pensamientos de este.</p>
+                </div>
+                <div class="concept-item searchable-item">
+                    <h3>-/do</h3>
+                    <p>Se utiliza para rolear lo que sucede en el entorno, los sentimientos y pensamientos, los intentos para llevar a cabo acciones, además de descripciones de objetos y personajes.</p>
+                </div>
+                <div class="concept-item searchable-item">
+                    <h3>Meta Kill (MK)</h3>
+                    <p>Se define como la acción de abatir a un usuario, debido a motivos o acciones acontecidas fuera de nuestro personaje (OOC).</p>
+                </div>
+                <div class="concept-item searchable-item">
+                    <h3>No Rol de Choque (NRC)</h3>
+                    <p>Se define como "No Rolear Choque" y este concepto aplica para todo tipo de vehículo. Al impactar contra algún objeto/infraestructura deberás rolear el choque como tal.</p>
+                </div>
+                <div class="concept-item searchable-item">
+                    <h3>Fear RolePlay (FRP)</h3>
+                    <p>El FRP es el miedo que debe experimentar nuestro personaje de manera IC en situaciones que lo ameriten. (Este concepto está ligado directamente con la Valoración de Vida).</p>
+                </div>
+                <div class="concept-item searchable-item">
+                    <h3>Player Kill (PK)</h3>
+                    <p>Es la norma que establece cómo se manejan los recuerdos y la muerte de tu personaje. Si tu personaje queda inconsciente o abatido, ya sea que reciba ayuda médica o no, se aplica un PK. Esto significa que tu personaje olvida los eventos o situaciones que lo derivaron a encontrarse en ese estado.</p>
+                </div>
+                <div class="concept-item searchable-item">
+                    <h3>Admin Abuse (AA)</h3>
+                    <p>Se define como la utilización de comandos/acciones administrativas en beneficio propio o de otros usuarios.</p>
+                </div>
+                <div class="concept-item searchable-item">
+                    <h3>Bunny Jump (BJ)</h3>
+                    <p>Variante del Power Gaming. Es la acción de saltar repetidamente para no gastar tanta energía e ir más rápido; el hacer esta acción conllevará a una sanción.</p>
+                </div>
+                <div class="concept-item searchable-item">
+                    <h3>Spawn Kill (SK)</h3>
+                    <p>Se refiere a la situación en la que un usuario es abatido por otro al momento de ingresar al servidor o al salir de un lugar (Shell o IPL), donde resulta imposible moverse debido a las mecánicas del juego, y demora unos segundos.</p>
+                </div>
+                <div class="concept-item searchable-item">
+                    <h3>Nood Abuse (NA)</h3>
+                    <p>Se refiere a aprovecharse de un usuario sin experiencia en el servidor o en el roleplay, ya sea asaltándolo o manipulándolo para que realice acciones que solo beneficien a quienes abusan de él o ella.</p>
+                </div>
+                <div class="concept-item searchable-item">
+                    <h3>Character Kill (CK)</h3>
+                    <p>Este concepto se refiere a la muerte de tu personaje, sin oportunidad de preservar su historia, lo que significa que no se podrá utilizar nuevamente. Con esto se deberá empezar con otro personaje con un nuevo RDI.</p>
+                </div>
+                <div class="concept-item searchable-item">
+                    <h3>ZigZag (ZZ)</h3>
+                    <p>Durante un tiroteo, si te disparan y reaccionas corriendo de un lado a otro para evitar los disparos (PG2), esto puede considerarse como un uso inapropiado e irrealista de las mecánicas del juego.</p>
+                </div>
+                <div class="concept-item searchable-item">
+                    <h3>Deathmatch (DM)</h3>
+                    <p>Se define como el asesinato de otro usuario sin ninguna razón válida o sin un rol previo. Otro ejemplo de DM is matar a un usuario por mera diversión/entretenimiento.</p>
+                </div>
+                <div class="concept-item searchable-item">
+                    <h3>Team Kill (TK)</h3>
+                    <p>Se define como matar a un miembro de tu misma facción/equipo, sin ningún rol de por medio y/o de manera intencionada.</p>
+                </div>
+                <div class="concept-item searchable-item">
+                    <h3>Player Kill Total (PKT)</h3>
+                    <p>Se refiere a la muerte de tu personaje, resultando en la pérdida total de la memoria y de su historia desde su inicio en el servidor. Esto implica que el personaje olvida todos los eventos y experiencias vividas en el servidor, quedando solamente con los recuerdos previos a su entrada en el mismo.</p>
+                </div>
+                <div class="concept-item searchable-item">
+                    <h3>Nulo Rol De Entorno (NRE)</h3>
+                    <p>Se refiere a cuando no prestas atención o no consideras lo que está ocurriendo a tu alrededor en una zona o lugar en específico.</p>
+                </div>
+                <div class="concept-item searchable-item">
+                    <h3>Nulo Rol De Heridas (NRH)</h3>
+                    <p>Una variante del Power Gaming, se define como "No Rolear Heridas". Si tu personaje resulta herido, algún motivo deberás interpretar correctamente, de acuerdo a lo sucedido.</p>
+                </div>
+                <div class="concept-item searchable-item">
+                    <h3>Car Jacked (CJ)</h3>
+                    <p>Se define como el robo de un vehículo sin ningún rol previo. (Solo presionar la tecla correspondiente y robar el vehículo).</p>
+                </div>
+                <div class="concept-item searchable-item">
+                    <h3>Ghosting</h3>
+                    <p>Variante del Meta Gaming. Sucede cuando tu personaje queda abatido y revelas tu ubicación a través de un canal OOC.</p>
+                </div>
+                <div class="concept-item searchable-item">
+                    <h3>Bad Driving (BD)</h3>
+                    <p>Se define como la conducción de manera temeraria y poco realista, chocando constantemente con objetos y obstáculos, no respetando el rol de entorno correspondiente.</p>
+                </div>
+                <div class="concept-item searchable-item">
+                    <h3>Revenge Kill (RK)</h3>
+                    <p>Se define como la acción de regresar al sitio donde has sido abatido anteriormente (PK) y continuar participando en el tiroteo, con fines de asesinar a quien previamente lo hizo contigo.</p>
+                </div>
+                <div class="concept-item searchable-item">
+                    <h3>Nulo rol De Interpretacion (NRI)</h3>
+                    <p>El RDI es la interpretación de nuestro personaje de manera IC. El uso de emulador es exclusivo para PEDs. Al interpretar un personaje debemos saber darle una personalidad distinta con nuestra voz propia.</p>
+                </div>
+            </div>
+
+            <!-- SECCIÓN 4: NORMATIVA ROLEPLAY -->
+            <div id="roleplay" class="norm-section searchable-block" data-category="generales">
+                <h1>Normativa RolePlay</h1>
+                <div class="meta-info">
+                    <span>🕒 Actualizado: Reciente</span>
+                    <span class="badge-vigente">🟢 Oficial y Vigente</span>
+                </div>
+                <p style="margin-bottom: 25px;">Normas generales y directrices de interpretación para el desarrollo del rol en Altamar RolePlay.</p>
+
+                <div class="concept-item searchable-item">
+                    <h3>Robo a Cuerpos Abatidos</h3>
+                    <p>Está prohibido cachear cuerpos abatidos, salvo en zonas rojas o propiedades privadas de organizaciones delictuales.</p>
+                </div>
+                <div class="concept-item searchable-item">
+                    <h3>Nombres IC</h3>
+                    <p>Los nombres de tus personajes deben ser reales. Evita bromas o abreviaturas. Solo se permite cambiar el nombre o apellido una vez por slot.</p>
+                </div>
+                <div class="concept-item searchable-item">
+                    <h3>Vestimentas</h3>
+                    <p>Los civiles deben usar ropa adecuada a la vida real y no portar máscaras, ropa militar o chalecos visibles. Estos artículos solo pueden estar en la mochila y en casos específicos permitidos por la normativa delictual.</p>
+                </div>
+                <div class="concept-item searchable-item">
+                    <h3>Comentarios IC a OOC</h3>
+                    <p>No se permite trasladar la toxicidad IC a comentarios OOC. Esto resultará en una sanción PERMANENTE.</p>
+                </div>
+                <div class="concept-item searchable-item">
+                    <h3>Roll-Back</h3>
+                    <p>El Roll-Back solo se permite en caso de errores que interrumpan el rol, y se debe presentar evidencia. Solo se puede solicitar un RB, no en zonas rojas, y no se aceptan RB por AA2 o bugs de pared.</p>
+                </div>
+                <div class="concept-item searchable-item">
+                    <h3>Publicidad</h3>
+                    <p>Está PROHIBIDO publicitar otros servidores dentro del juego o en Discord. Los infractores serán desvinculados inmediatamente.</p>
+                </div>
+                <div class="concept-item searchable-item">
+                    <h3>Facciones Legales</h3>
+                    <p>No puedes realizar actos delictivos siendo parte de facciones legales como SAMU, PDI, Carabineros o Bomberos. Debes respetar tu RDI en todo momento.</p>
+                </div>
+                <div class="concept-item searchable-item">
+                    <h3>Abusar de Facción</h3>
+                    <p>Está prohibido abusar de un trabajo legal para beneficio personal, como retirar armas de Carabineros o suministros de SAMU para uso personal o de amigos. No se permite guardar objetos ilegales en casilleros de facciones legales.</p>
+                </div>
+                <div class="concept-item searchable-item">
+                    <h3>Rolear de OD sin Serlo</h3>
+                    <p>Hacerse pasar por OD está totalmente prohibido. No se pueden usar vestimentas o colores similares para roles agresivos.</p>
+                </div>
+                <div class="concept-item searchable-item">
+                    <h3>Uso de Graffiti</h3>
+                    <p>(Exclusivo de Organizaciones Delictuales) Para realizar graffiti, se requiere al menos 4 Carabineros conectados y respetar el +1. Debe usarse el comando /entorno antes de proceder. Los ciudadanos que realicen graffiti serán sancionados.</p>
+                </div>
+                <div class="concept-item searchable-item">
+                    <h3>Patentes</h3>
+                    <p>Eliminar las patentes de los vehículos (dirigido a mecánicos) está prohibido. Resultará en sanción y posible desvinculación de la facción.</p>
+                </div>
+                <div class="concept-item searchable-item">
+                    <h3>Matar en Sigilo</h3>
+                    <p>El asesinato en "golpe sigiloso" solo puede realizarse por facciones con roles importantes (Carabineros, OD) y en roles delictivos específicos. El abuso de esta mecánica será sancionado.</p>
+                </div>
+                <div class="concept-item searchable-item">
+                    <h3>Traspaso de Pertenencias</h3>
+                    <p>En caso de un CK (Character Kill), está prohibido transferir pertenencias adquiridas IC a otro jugador. Los objetos adquiridos mediante VIPs se mantienen.</p>
+                </div>
+            </div>
+
+            <!-- SECCIÓN 5: NORMATIVA STREAMER -->
+            <div id="streamer" class="norm-section searchable-block" data-category="generales">
+                <h1>Normativa Streamer</h1>
+                <div class="meta-info">
+                    <span>🕒 Actualizado: Reciente</span>
+                    <span class="badge-vigente">🟢 Oficial y Vigente</span>
+                </div>
+                <p style="margin-bottom: 25px;">Lineamientos y directrices para creadores de contenido y streamers oficiales de la comunidad.</p>
+
+                <div class="concept-item searchable-item">
+                    <h3>Comportamiento en Streaming</h3>
+                    <p>Mientras un streamer está en vivo, no se puede reportar ni cuestionar su conducta por comentarios que no afecten directamente el rol IC. Ejemplos:</p>
+                    <p style="margin-top: 8px;">• No se puede reportar a un streamer por lo que diga en su stream si no impacta IC.<br>• No se pueden usar clips del stream para reportar situaciones IC; debes tener tu propia evidencia.</p>
+                </div>
+
+                <div class="concept-item searchable-item">
+                    <h3>Sanciones y Stream</h3>
+                    <p>Las sanciones son las mismas para todos, pero no se aplican durante el stream. Las sanciones se gestionan fuera del horario de transmisión. Si un streamer promueve anti-rol IC o hace comentarios ofensivos sobre el staff o usuarios, se pueden aplicar sanciones durante el stream.</p>
+                </div>
+
+                <div class="concept-item searchable-item">
+                    <h3>Soporte y Resolución</h3>
+                    <p>Cuando un streamer necesita soporte IC, no se debe transmitir el audio de la resolución para evitar toxicidad. El soporte se maneja como para cualquier usuario: abre un ticket y espera la respuesta del staff. Solo se ofrece soporte de voz en casos críticos como:</p>
+                    <p style="margin-top: 8px;">• Comentarios ofensivos (homofobia, racismo, etc.).<br>• Problemas graves de MG.<br>• Cheaters/modders afectando el juego o el stream.</p>
+                </div>
+
+                <div class="concept-item searchable-item">
+                    <h3>Backseat Gaming</h3>
+                    <p>Los streamers no deben hacer backseat gaming si afecta la experiencia de otros jugadores.</p>
+                </div>
+
+                <div class="concept-item searchable-item">
+                    <h3>Reportar Problemas</h3>
+                    <p>Si un streamer tiene problemas con usuarios o staff que afectan el contenido, puede abrir un ticket con evidencia para que administración actúe. Los niveles se revisan y aprueban según tu constancia.</p>
+                </div>
+
+                <div class="concept-item searchable-item">
+                    <h3>Requisitos para ser Streamer Oficial</h3>
+                    <p>• Tener al menos 5 espectadores de media.<br>• Buen comportamiento en stream y en el servidor.<br>• Sin sanciones graves en las últimas 3 semanas.<br>• Comenzarás como "Streamer a Prueba" y, si cumples con los estándares, serás promovido a "Streamer Oficial".</p>
+                </div>
+            </div>
+
+            <!-- SECCIÓN 6: NORMATIVA CHARACTER KILL (CK) -->
+            <div id="ck" class="norm-section searchable-block" data-category="generales">
+                <h1>Normativa Character Kill [CK]</h1>
+                <div class="meta-info">
+                    <span>🕒 Actualizado: Reciente</span>
+                    <span class="badge-vigente">🟢 Oficial y Vigente</span>
+                </div>
+                <p style="margin-bottom: 25px;">Tipos y regulaciones aplicables para la muerte permanente de personajes en el servidor.</p>
+
+                <div class="concept-item searchable-item">
+                    <h3>CK Voluntario</h3>
+                    <p>Cuando un usuario decide empezar de nuevo con un nuevo personaje, se trata de un CK voluntario. En el ticket de CK, debes incluir la historia y el RDI del nuevo personaje, así como el motivo para solicitar el CK. Una vez que hayas abierto el ticket, no podrás transferir propiedades, dinero u objetos a otros usuarios. El incumplimiento de esta regla resultará en una sanción.</p>
+                </div>
+
+                <div class="concept-item searchable-item">
+                    <h3>CK Administrativo</h3>
+                    <p>Este CK ocurre cuando un miembro de la administración del servidor decide realizarte un CK utilizando su permiso autorizado por un director o secretario para eliminar el personaje de alguien, ya sea por incumplimiento de normativas, etc.</p>
+                </div>
+
+                <div class="concept-item searchable-item">
+                    <h3>CK Criminal</h3>
+                    <p>Los líderes de organizaciones ilegales pueden reservarse el derecho a realizar CK a uno de sus miembros siempre que lo vean necesario. En dicho caso, el CK deberá ser aceptado si aparece especificado en la normativa de la organización, lo cual implica que los miembros aceptan su posible muerte anticipadamente al ingresar. Esta especie de contrato debe estar reflejado en el propio hilo del grupo y, de este modo, será válido a efectos administrativos. De no ser así, no se podrá realizar CK por esta vía.</p>
+                </div>
+
+                <div class="concept-item searchable-item">
+                    <h3>CK Médico</h3>
+                    <p>Este tipo de CK es llevado a cabo por EMS cuando un personaje enfrenta múltiples complicaciones graves durante un rol. En este caso, el personaje pasará por un procedimiento de autopsia. Para realizar un CK Médico, el usuario debe abrir un ticket y obtener la aprobación del STAFF. El límite de multas es de $5.000.000; si se supera este monto, la Directiva del Hospital notificará a Carabineros para que inicie el procedimiento correspondiente.</p>
+                </div>
+
+                <div class="concept-item searchable-item">
+                    <h3>CK Policial</h3>
+                    <p>Este tipo de CK se aplica cuando un personaje recibe una condena de cadena perpetua. Para llegar a esta situación, el personaje debe acumular un total de $15.000.000 en multas impuestas por Carabineros y PDI. Una vez alcanzado este monto, Carabineros trasladará al imputado a la prisión 1 (cárcel de la granja), donde se podrá llevar a cabo un rol de rescate. Si el sujeto es rescatado, deberá pagar al menos el 35% de las multas acumuladas en un plazo de 24 horas para evitar una orden de búsqueda y captura.</p>
+                </div>
+            </div>
+
+            <!-- SECCIÓN 7: NORMATIVA CUERPO/ENTORNO -->
+            <div id="cuerpo-entorno" class="norm-section searchable-block" data-category="generales">
+                <h1>Normativa Cuerpo/Entorno</h1>
+                <div class="meta-info">
+                    <span>🕒 Actualizado: Reciente</span>
+                    <span class="badge-vigente">🟢 Oficial y Vigente</span>
+                </div>
+                <p style="margin-bottom: 25px;">Aquí tendrás la normativa del cuerpo y de entornos a utilizar dentro del servidor.</p>
+
+                <div class="concept-item searchable-item">
+                    <h3>Cuerpo Realista</h3>
+                    <p>Utilizar el cuerpo cuadrado "Cuerpo de NPC" es OBLIGATORIO, de lo contrario nuestro personal de moderación tiene que advertirte y si no te equipas el cuerpo cuadrado podrás ser expulsado del servidor.</p>
+                </div>
+
+                <div class="concept-item searchable-item">
+                    <h3>Normativa de Entornos</h3>
+                    <p>Aquí encontrarás la normativa de entornos del servidor. Al momento de realizar un robo deberás de enviar un entorno con <code>/entorno</code> y especificar los datos del robo, el lugar, quiénes y cuántos fueron y detalles específicos.</p>
+                    <p style="margin-top: 12px;">Al momento de robar un vehículo deberás enviar el entorno con lo sucedido, la comuna y lugar, y los datos del vehículo, como su marca, patente, color, modelo, etc.</p>
+                    <p style="margin-top: 12px;">Se recuerda que el incumplimiento de esta normativa es un motivo para que el staff tome las medidas correspondientes contra ti y todos los involucrados.</p>
+                </div>
+            </div>
+        </content-area>
+    </div>
+
+    <!-- Script de navegación y menú móvil -->
+    <script>
+        const dropdownMenu = document.getElementById('dropdownMenu');
+        const dropBtn = document.getElementById('dropBtn');
+        const menuLateral = document.getElementById('menuLateral');
+        const sidebarTitleCategory = document.getElementById('sidebarTitleCategory');
+        const sections = document.querySelectorAll('.norm-section');
+        const buscador = document.getElementById('buscadorNormas');
+        const menuBtn = document.getElementById('menuBtn');
+        const sidebarMenu = document.getElementById('sidebarMenu');
+
+        const catData = {
+            titulo: "Normativa Roleplay",
+            items: [
+                { target: "presentacion", texto: "Presentación" },
+                { target: "discord", texto: "Normativa Discord" },
+                { target: "conceptos", texto: "Conceptos de RolePlay" },
+                { target: "roleplay", texto: "Normativa RolePlay" },
+                { target: "streamer", texto: "Normativa Streamer" },
+                { target: "ck", texto: "Normativa Character Kill [CK]" },
+                { target: "cuerpo-entorno", texto: "Normativa Cuerpo/Entorno" }
+            ]
+        };
+
+        // Mostrar u ocultar menú desplegable superior
+        dropBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            dropdownMenu.classList.toggle('show');
+        });
+
+        window.addEventListener('click', () => {
+            if (dropdownMenu.classList.contains('show')) {
+                dropdownMenu.classList.remove('show');
+            }
+        });
+
+        function cargarSidebar() {
+            sidebarTitleCategory.textContent = catData.titulo;
+            menuLateral.innerHTML = '';
+
+            catData.items.forEach((item, index) => {
+                const li = document.createElement('li');
+                const a = document.createElement('a');
+                a.href = '#';
+                a.setAttribute('data-target', item.target);
+                a.textContent = item.texto;
+                if(index === 0) a.classList.add('active');
+                li.appendChild(a);
+                menuLateral.appendChild(li);
+            });
+
+            vincularEventosSidebar();
+        }
+
+        function vincularEventosSidebar() {
+            const nuevosLinks = document.querySelectorAll('#menuLateral a');
+            nuevosLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    nuevosLinks.forEach(l => l.classList.remove('active'));
+                    sections.forEach(s => s.classList.remove('active'));
+
+                    link.classList.add('active');
+                    const targetId = link.getAttribute('data-target');
+                    document.getElementById(targetId).classList.add('active');
+                    
+                    buscador.value = '';
+                    filtrarBusqueda('');
+
+                    if(window.innerWidth <= 768) {
+                        sidebarMenu.classList.remove('mobile-open');
+                    }
+                });
+            });
+        }
+
+        cargarSidebar();
+
+        // Control del menú hamburguesa en móvil
+        menuBtn.addEventListener('click', () => {
+            sidebarMenu.classList.toggle('mobile-open');
+        });
+
+        // Lógica del buscador en tiempo real
+        buscador.addEventListener('input', (e) => {
+            const termino = e.target.value.toLowerCase().trim();
+            filtrarBusqueda(termino);
+        });
+
+        function filtrarBusqueda(termino) {
+            if (termino.length > 0) {
+                sections.forEach(section => {
+                    section.classList.add('active');
+                    const items = section.querySelectorAll('.searchable-item');
+                    
+                    items.forEach(item => {
+                        const texto = item.textContent.toLowerCase();
+                        if (texto.includes(termino)) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            } else {
+                const activeLink = document.querySelector('#menuLateral a.active');
+                if(activeLink) {
+                    const targetId = activeLink.getAttribute('data-target');
+                    sections.forEach(section => {
+                        if (section.id === targetId) {
+                            section.classList.add('active');
+                        } else {
+                            section.classList.remove('active');
+                        }
+                        section.querySelectorAll('.searchable-item').forEach(item => {
+                            item.style.display = 'block';
+                        });
+                    });
+                }
+            }
+        }
+    </script>
+</body>
+</html>

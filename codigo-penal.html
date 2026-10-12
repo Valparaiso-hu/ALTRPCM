@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Código Penal - Altamar RolePlay</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .norm-section { display: none; }
+        .norm-section.active { display: block; }
+
+        /* Estilos para el menú desplegable superior */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropbtn {
+            background-color: transparent;
+            color: var(--text-muted);
+            border: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-family: inherit;
+            transition: color 0.2s;
+        }
+
+        .dropbtn:hover, .dropbtn.active {
+            color: var(--text-main);
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--bg-card);
+            min-width: 220px;
+            box-shadow: 0px 8px 24px rgba(0,0,0,0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            z-index: 1000;
+            padding: 8px 0;
+            margin-top: 10px;
+        }
+
+        .dropdown-content a {
+            color: var(--text-muted);
+            padding: 10px 18px;
+            text-decoration: none;
+            display: block;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .dropdown-content a:hover {
+            background-color: rgba(37, 99, 235, 0.15);
+            color: var(--text-main);
+        }
+
+        .dropdown.show .dropdown-content {
+            display: block;
+        }
+
+        /* Estilo limpio para los artículos legales */
+        .penal-item {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.95rem;
+        }
+
+        .penal-item:last-child {
+            border-bottom: none;
+        }
+
+        .penal-article {
+            color: var(--text-main);
+            font-weight: 600;
+        }
+
+        .penal-sanction {
+            color: var(--text-muted);
+            font-weight: 500;
+            background-color: rgba(255, 255, 255, 0.03);
+            padding: 4px 10px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Barra de navegación superior -->
+    <header>
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <!-- Botón de menú para celulares -->
+            <button class="menu-toggle" id="menuBtn">☰</button>
+            <div class="logo-area">ALTAMAR ROLEPLAY COMMUNITY</div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Inicio</a></li>
+            
+            <!-- Menú Desplegable con redirección de páginas -->
+            <li class="dropdown" id="dropdownMenu">
+                <button class="dropbtn active" id="dropBtn">Código Penal ▾</button>
+                <div class="dropdown-content">
+                    <a href="normativa.html">Normativas Generales</a>
+                    <a href="delictual.html">Normativa Delictual</a>
+                    <a href="concesionario.html">Concesionario</a>
+                    <a href="codigo-penal.html">Código Penal</a>
+                </div>
+            </li>
+
+            <li><a href="#">Tienda</a></li>
+            <li><a href="#">Equipo</a></li>
+        </ul>
+    </header>
+
+    <!-- Cuerpo principal -->
+    <div class="main-layout">
+        <!-- Sidebar lateral -->
+        <sidebar id="sidebarMenu">
+            <div class="sidebar-title" id="sidebarTitleCategory">Código Penal</div>
+            <ul class="sidebar-menu" id="menuLateral">
+                <!-- Se inyectarán dinámicamente -->
+            </ul>
+        </sidebar>
+
+        <!-- Contenido principal -->
+        <content-area>
+            <div class="search-bar">
+                <input type="text" placeholder="Buscar artículo, delito o multa..." id="buscadorNormas">
+            </div>
+
+            <!-- TÍTULO I -->
+            <div id="titulo-i" class="norm-section active searchable-block" data-category="penal">
+                <h1>Título I</h1>
+                <div class="meta-info">
+                    <span>🕒 Actualizado: Reciente</span>
+                    <span class="badge-vigente">🟢 Oficial y Vigente</span>
+                </div>
+                <p style="margin-bottom: 25px;">Infracciones de tránsito y seguridad vial.</p>
+
+                <div class="concept-item searchable-item">
+                    <div class="penal-item"><span class="penal-article">ART 1: Giro Indebido</span><span class="penal-sanction">Multa $50.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 2: Circular en Sentido Contrario</span><span class="penal-sanction">Multa $250.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 3: Estacionar en Zonas no Habilitadas</span><span class="penal-sanction">Multa $100.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 4: Ignorar las Señalizaciones de Tránsito</span><span class="penal-sanction">Multa $110.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 5: Obstruir el Paso a un Vehículo de Emergencia</span><span class="penal-sanction">Multa $300.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 6: Omitir un Control de Tráfico</span><span class="penal-sanction">Multa $200.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 7: Exceso de Velocidad</span><span class="penal-sanction">Multa $300.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 8: Conducción Temeraria</span><span class="penal-sanction">Multa $200.000 + traslado</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 9: Conducción Bajo Efectos del Alcohol</span><span class="penal-sanction">Multa $200.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 10: Conducción Bajo Efectos de Sustancias Alucinógenas</span><span class="penal-sanction">Multa $200.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 11: Circular sin Medidas de Seguridad (Casco/Cinturón)</span><span class="penal-sanction">Multa $150.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 12: Ignorar Señales de la Policía</span><span class="penal-sanction">Multa $150.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 13: Conducir en Estado de Embriaguez</span><span class="penal-sanction">Multa $80.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 14: Circular sin Licencia de Conducir</span><span class="penal-sanction">Antecedente $115.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 15: Vehículo Mal Estacionado</span><span class="penal-sanction">Multa $78.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 16: Vehículo sin Matrícula o Matrícula Tapada</span><span class="penal-sanction">Multa $90.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 17: Realizar Adelantamiento Indebido</span><span class="penal-sanction">Multa $115.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 18: Uso Excesivo de la Bocina</span><span class="penal-sanction">Multa $55.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 19: Circular Marcha Atrás</span><span class="penal-sanction">Multa $60.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 20: Evadir Control de Tráfico Policial</span><span class="penal-sanction">Antecedente $120.000</span></div>
+                </div>
+            </div>
+
+            <!-- TÍTULO II -->
+            <div id="titulo-ii" class="norm-section searchable-block" data-category="penal">
+                <h1>Título II</h1>
+                <div class="meta-info">
+                    <span>🕒 Actualizado: Reciente</span>
+                    <span class="badge-vigente">🟢 Oficial y Vigente</span>
+                </div>
+                <p style="margin-bottom: 25px;">Delitos contra la propiedad y robos.</p>
+
+                <div class="concept-item searchable-item">
+                    <div class="penal-item"><span class="penal-article">ART 21: Receptación</span><span class="penal-sanction">Antecedente $800.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 22: Robo con Intimidación</span><span class="penal-sanction">Antecedente $300.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 23: Robo con Violencia</span><span class="penal-sanction">Antecedente $430.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 24: Robo a Civil por Abuso de Confianza</span><span class="penal-sanction">Antecedente $500.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 25: Robo en Lugar Habitado</span><span class="penal-sanction">Antecedente $600.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 26: Hurto</span><span class="penal-sanction">Antecedente $100.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 27: Robo con Fuerza</span><span class="penal-sanction">Antecedente $750.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 28: Robo por Sorpresa</span><span class="penal-sanction">Antecedente $600.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 29: Robo a Mano Armada en Vía Pública</span><span class="penal-sanction">Antecedente $550.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 30: Portar Elementos para Cometer Delitos</span><span class="penal-sanction">Multa $200.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 31: Robo Calificado</span><span class="penal-sanction">Antecedente $1.500.000</span></div>
+                </div>
+            </div>
+
+            <!-- TÍTULO III -->
+            <div id="titulo-iii" class="norm-section searchable-block" data-category="penal">
+                <h1>Título III</h1>
+                <div class="meta-info">
+                    <span>🕒 Actualizado: Reciente</span>
+                    <span class="badge-vigente">🟢 Oficial y Vigente</span>
+                </div>
+                <p style="margin-bottom: 25px;">Delitos contra las personas, orden público y falsedad.</p>
+
+                <div class="concept-item searchable-item">
+                    <div class="penal-item"><span class="penal-article">ART 32: Acoso Sexual</span><span class="penal-sanction">Antecedente $600.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 33: Exhibicionismo</span><span class="penal-sanction">Multa $150.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 34: Suplantación de Identidad</span><span class="penal-sanction">Antecedente $1.200.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 35: Obstrucción a la Justicia</span><span class="penal-sanction">Antecedente $1.500.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 36: Cohecho</span><span class="penal-sanction">Antecedente $500.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 37: Falsedad Documental</span><span class="penal-sanction">Antecedente $700.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 38: Alteración del Orden Público</span><span class="penal-sanction">Multa $400.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 39: Amenaza de Muerte</span><span class="penal-sanction">Antecedente $600.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 40: Maltrato Animal</span><span class="penal-sanction">Antecedente $550.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 41: Ocultación de Identidad</span><span class="penal-sanction">Multa $250.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 42: Allanamiento de Morada</span><span class="penal-sanction">Antecedente $800.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 43: Delito de Racismo</span><span class="penal-sanction">Antecedente $500.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 44: Intento de Violación</span><span class="penal-sanction">Antecedente $800.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 45: Violación</span><span class="penal-sanction">Antecedente $3.000.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 46: Civil Circulando sin Documentación (DNI)</span><span class="penal-sanction">Multa $200.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 47: Fraude o Engaño</span><span class="penal-sanction">Antecedente $150.000</span></div>
+                </div>
+            </div>
+
+            <!-- TÍTULO IV -->
+            <div id="titulo-iv" class="norm-section searchable-block" data-category="penal">
+                <h1>Título IV</h1>
+                <div class="meta-info">
+                    <span>🕒 Actualizado: Reciente</span>
+                    <span class="badge-vigente">🟢 Oficial y Vigente</span>
+                </div>
+                <p style="margin-bottom: 25px;">Delitos relacionados con armamento, sustancias y atentados a la autoridad.</p>
+
+                <div class="concept-item searchable-item">
+                    <div class="penal-item"><span class="penal-article">ART 48: Posesión de Arma Blanca Ilegal</span><span class="penal-sanction">Antecedente $300.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 49: Posesión de Arma de Fuego Ilegal</span><span class="penal-sanction">Antecedente $800.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 50: Posesión de Estupefacientes</span><span class="penal-sanction">Antecedente $800.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 51: Posesión de Drogas</span><span class="penal-sanction">Multa $400.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 52: Tráfico de Drogas</span><span class="penal-sanction">Antecedente $1.000.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 53: Consumo de Estupefacientes en Vía Pública</span><span class="penal-sanction">Multa $350.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 92: Intento de Homicidio a Funcionarios Públicos</span><span class="penal-sanction">Preventiva</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 93: Homicidio a Funcionarios Públicos</span><span class="penal-sanction">Perpetua</span></div>
+                </div>
+            </div>
+
+            <!-- TÍTULO V -->
+            <div id="titulo-v" class="norm-section searchable-block" data-category="penal">
+                <h1>Título V</h1>
+                <div class="meta-info">
+                    <span>🕒 Actualizado: Reciente</span>
+                    <span class="badge-vigente">🟢 Oficial y Vigente</span>
+                </div>
+                <p style="margin-bottom: 25px;">Delitos graves, terrorismo y atentados contra la seguridad del Estado.</p>
+
+                <div class="concept-item searchable-item">
+                    <div class="penal-item"><span class="penal-article">ART 54: Ciberterrorismo</span><span class="penal-sanction">Antecedente $2.000.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 55: Amenaza de Bomba</span><span class="penal-sanction">Antecedente $900.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 56: Secuestro</span><span class="penal-sanction">Antecedente $2.500.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 57: Sabotaje</span><span class="penal-sanction">Antecedente $1.500.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 58: Terrorismo</span><span class="penal-sanction">Antecedente $3.500.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 59: Amenazas Graves</span><span class="penal-sanction">Antecedente $1.200.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 60: Intimidación Pública</span><span class="penal-sanction">Multa $700.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 61: Incendio Intencional</span><span class="penal-sanction">Antecedente $1.200.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 62: Trata de Personas</span><span class="penal-sanction">Multa $2.500.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 63: Explosiones y Fabricación de Bombas</span><span class="penal-sanction">Perpetua</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 64: Extorsión</span><span class="penal-sanction">Antecedente $1.800.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 90: Homicidio</span><span class="penal-sanction">Preventiva $3.500.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 91: Intento de Homicidio</span><span class="penal-sanction">Investigación $2.500.000</span></div>
+                </div>
+            </div>
+
+            <!-- TÍTULO VI -->
+            <div id="titulo-vi" class="norm-section searchable-block" data-category="penal">
+                <h1>Título VI</h1>
+                <div class="meta-info">
+                    <span>🕒 Actualizado: Reciente</span>
+                    <span class="badge-vigente">🟢 Oficial y Vigente</span>
+                </div>
+                <p style="margin-bottom: 25px;">Delitos medioambientales y contra los recursos naturales.</p>
+
+                <div class="concept-item searchable-item">
+                    <div class="penal-item"><span class="penal-article">ART 65: Maltrato Animal</span><span class="penal-sanction">Multa $400.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 66: Pesca Ilegal</span><span class="penal-sanction">Multa $700.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 67: Almacenamiento Inadecuado de Residuos Peligrosos</span><span class="penal-sanction">Multa $800.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 68: Construcción Ilegal en Áreas Protegidas</span><span class="penal-sanction">Multa $1.000.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 69: Contaminación Ambiental</span><span class="penal-sanction">Multa $600.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 70: Deforestación Ilegal</span><span class="penal-sanction">Multa $1.200.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 71: Tráfico Ilegal de Especies Protegidas</span><span class="penal-sanction">Antecedente $900.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 72: Vertido de Sustancias Tóxicas</span><span class="penal-sanction">Multa $1.000.000</span></div>
+                </div>
+            </div>
+
+            <!-- TÍTULO VII -->
+            <div id="titulo-vii" class="norm-section searchable-block" data-category="penal">
+                <h1>Título VII</h1>
+                <div class="meta-info">
+                    <span>🕒 Actualizado: Reciente</span>
+                    <span class="badge-vigente">🟢 Oficial y Vigente</span>
+                </div>
+                <p style="margin-bottom: 25px;">Infracciones y delitos contra la administración de justicia y funciones policiales.</p>
+
+                <div class="concept-item searchable-item">
+                    <div class="penal-item"><span class="penal-article">ART 73: Negligencia en el Desempeño de Funciones</span><span class="penal-sanction">Multa $120.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 74: Desacato a la Autoridad</span><span class="penal-sanction">Multa $125.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 75: Falso Testimonio</span><span class="penal-sanction">Multa $75.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 76: Insulto a Funcionario Público</span><span class="penal-sanction">Multa $100.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 77: Resistirse al Arresto</span><span class="penal-sanction">Antecedente $850.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 78: Huir de la Policía</span><span class="penal-sanction">Antecedente $530.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 79: Impago de Multas</span><span class="penal-sanction">Antecedente $100.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 80: Delito de Prevaricación</span><span class="penal-sanction">Antecedente $200.000</span></div>
+                </div>
+            </div>
+
+            <!-- TÍTULO VIII -->
+            <div id="titulo-viii" class="norm-section searchable-block" data-category="penal">
+                <h1>Título VIII</h1>
+                <div class="meta-info">
+                    <span>🕒 Actualizado: Reciente</span>
+                    <span class="badge-vigente">🟢 Oficial y Vigente</span>
+                </div>
+                <p style="margin-bottom: 25px;">Delitos cometidos por funcionarios públicos y abuso de autoridad.</p>
+
+                <div class="concept-item searchable-item">
+                    <div class="penal-item"><span class="penal-article">ART 81: Abuso de Autoridad</span><span class="penal-sanction">Antecedente $1.200.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 82: Agredir a un Civil</span><span class="penal-sanction">Multa $100.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 83: Violación de Confidencialidad</span><span class="penal-sanction">Antecedente $1.000.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 84: Denegación de Auxilio</span><span class="penal-sanction">Antecedente $250.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 85: Fraude en la Administración Pública</span><span class="penal-sanction">Antecedente $1.500.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 86: Pertenencia a Banda Criminal</span><span class="penal-sanction">Investigación + preventiva</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 87: Venta de Sustancias Incautadas</span><span class="penal-sanction">Antecedente $1.200.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 88: Ebriedad o Estupefacientes en Servicio</span><span class="penal-sanction">Antecedente $400.000</span></div>
+                    <div class="penal-item"><span class="penal-article">ART 89: Acosar a un Civil</span><span class="penal-sanction">Antecedente $150.000</span></div>
+                </div>
+            </div>
+        </content-area>
+    </div>
+
+    <!-- Script de navegación, categorías y menú móvil -->
+    <script>
+        const dropdownMenu = document.getElementById('dropdownMenu');
+        const dropBtn = document.getElementById('dropBtn');
+        const menuLateral = document.getElementById('menuLateral');
+        const sidebarTitleCategory = document.getElementById('sidebarTitleCategory');
+        const sections = document.querySelectorAll('.norm-section');
+        const buscador = document.getElementById('buscadorNormas');
+        const menuBtn = document.getElementById('menuBtn');
+        const sidebarMenu = document.getElementById('sidebarMenu');
+
+        const catData = {
+            titulo: "Código Penal",
+            items: [
+                { target: "titulo-i", texto: "Título I" },
+                { target: "titulo-ii", texto: "Título II" },
+                { target: "titulo-iii", texto: "Título III" },
+                { target: "titulo-iv", texto: "Título IV" },
+                { target: "titulo-v", texto: "Título V" },
+                { target: "titulo-vi", texto: "Título VI" },
+                { target: "titulo-vii", texto: "Título VII" },
+                { target: "titulo-viii", texto: "Título VIII" }
+            ]
+        };
+
+        // Mostrar u ocultar menú desplegable superior
+        dropBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            dropdownMenu.classList.toggle('show');
+        });
+
+        window.addEventListener('click', () => {
+            if (dropdownMenu.classList.contains('show')) {
+                dropdownMenu.classList.remove('show');
+            }
+        });
+
+        function cargarSidebar() {
+            sidebarTitleCategory.textContent = catData.titulo;
+            menuLateral.innerHTML = '';
+
+            catData.items.forEach((item, index) => {
+                const li = document.createElement('li');
+                const a = document.createElement('a');
+                a.href = '#';
+                a.setAttribute('data-target', item.target);
+                a.textContent = item.texto;
+                if(index === 0) a.classList.add('active');
+                li.appendChild(a);
+                menuLateral.appendChild(li);
+            });
+
+            vincularEventosSidebar();
+        }
+
+        function vincularEventosSidebar() {
+            const nuevosLinks = document.querySelectorAll('#menuLateral a');
+            nuevosLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    nuevosLinks.forEach(l => l.classList.remove('active'));
+                    sections.forEach(s => s.classList.remove('active'));
+
+                    link.classList.add('active');
+                    const targetId = link.getAttribute('data-target');
+                    document.getElementById(targetId).classList.add('active');
+                    
+                    buscador.value = '';
+                    filtrarBusqueda('');
+
+                    if(window.innerWidth <= 768) {
+                        sidebarMenu.classList.remove('mobile-open');
+                    }
+                });
+            });
+        }
+
+        cargarSidebar();
+
+        // Control del menú hamburguesa en móvil
+        menuBtn.addEventListener('click', () => {
+            sidebarMenu.classList.toggle('mobile-open');
+        });
+
+        // Lógica del buscador en tiempo real
+        buscador.addEventListener('input', (e) => {
+            const termino = e.target.value.toLowerCase().trim();
+            filtrarBusqueda(termino);
+        });
+
+        function filtrarBusqueda(termino) {
+            if (termino.length > 0) {
+                sections.forEach(section => {
+                    section.classList.add('active');
+                    const items = section.querySelectorAll('.searchable-item');
+                    
+                    items.forEach(item => {
+                        const texto = item.textContent.toLowerCase();
+                        if (texto.includes(termino)) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            } else {
+                const activeLink = document.querySelector('#menuLateral a.active');
+                if(activeLink) {
+                    const targetId = activeLink.getAttribute('data-target');
+                    sections.forEach(section => {
+                        if (section.id === targetId) {
+                            section.classList.add('active');
+                        } else {
+                            section.classList.remove('active');
+                        }
+                        section.querySelectorAll('.searchable-item').forEach(item => {
+                            item.style.display = 'block';
+                        });
+                    });
+                }
+            }
+        }
+    </script>
+</body>
+</html>

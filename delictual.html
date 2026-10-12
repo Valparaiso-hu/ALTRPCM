@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Normativa Delictual - Altamar RolePlay</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .norm-section { display: none; }
+        .norm-section.active { display: block; }
+
+        /* Estilos para el menú desplegable superior */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropbtn {
+            background-color: transparent;
+            color: var(--text-muted);
+            border: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-family: inherit;
+            transition: color 0.2s;
+        }
+
+        .dropbtn:hover, .dropbtn.active {
+            color: var(--text-main);
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--bg-card);
+            min-width: 220px;
+            box-shadow: 0px 8px 24px rgba(0,0,0,0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            z-index: 1000;
+            padding: 8px 0;
+            margin-top: 10px;
+        }
+
+        .dropdown-content a {
+            color: var(--text-muted);
+            padding: 10px 18px;
+            text-decoration: none;
+            display: block;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .dropdown-content a:hover {
+            background-color: rgba(37, 99, 235, 0.15);
+            color: var(--text-main);
+        }
+
+        .dropdown.show .dropdown-content {
+            display: block;
+        }
+
+        /* Lista de precios organizada */
+        .weapon-price-list {
+            list-style: none;
+            padding: 0;
+            margin: 15px 0 0 0;
+        }
+
+        .weapon-price-list li {
+            padding: 8px 12px;
+            margin-bottom: 6px;
+            background-color: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        .weapon-price-list li span {
+            color: var(--text-main);
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Barra de navegación superior -->
+    <header>
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <!-- Botón de menú para celulares -->
+            <button class="menu-toggle" id="menuBtn">☰</button>
+            <div class="logo-area">ALTAMAR ROLEPLAY COMMUNITY</div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Inicio</a></li>
+            
+            <!-- Menú Desplegable con redirección de páginas -->
+            <li class="dropdown" id="dropdownMenu">
+                <button class="dropbtn active" id="dropBtn">Normativa Delictual ▾</button>
+                <div class="dropdown-content">
+                    <a href="normativa.html">Normativas Generales</a>
+                    <a href="delictual.html">Normativa Delictual</a>
+                    <a href="concesionario.html">Concesionario</a>
+                    <a href="codigo-penal.html">Código Penal</a>
+                </div>
+            </li>
+
+            <li><a href="#">Tienda</a></li>
+            <li><a href="#">Equipo</a></li>
+        </ul>
+    </header>
+
+    <!-- Cuerpo principal -->
+    <div class="main-layout">
+        <!-- Sidebar lateral -->
+        <sidebar id="sidebarMenu">
+            <div class="sidebar-title" id="sidebarTitleCategory">Normativa Delictual</div>
+            <ul class="sidebar-menu" id="menuLateral">
+                <!-- Se inyectarán dinámicamente -->
+            </ul>
+        </sidebar>
+
+        <!-- Contenido principal -->
+        <content-area>
+            <div class="search-bar">
+                <input type="text" placeholder="Buscar en normativa delictual..." id="buscadorNormas">
+            </div>
+
+            <!-- SECCIÓN 1: INTRODUCCIÓN -->
+            <div id="introduccion" class="norm-section active searchable-block" data-category="delictual">
+                <h1>Introducción</h1>
+                <div class="meta-info">
+                    <span>🕒 Actualizado: Reciente</span>
+                    <span class="badge-vigente">🟢 Oficial y Vigente</span>
+                </div>
+
+                <h3>Normativa Delictual - Altamar RolePlay</h3>
+                <p>Bienvenido al apartado de normativas delictivas de Altamar Roleplay. Este documento establece las reglas, directrices y límites bajo los cuales operan las Organizaciones Delictuales (OD) y los ciudadanos que participan en actividades al margen de la ley dentro del servidor.</p>
+                
+                <p>El rol criminal requiere un alto nivel de interpretación (RDI) y seriedad. Las acciones delictivas no están exentas de las normativas generales de entorno y valoración de vida, por lo que se exige un estricto cumplimiento para garantizar una experiencia justa y realista para todas las partes involucradas (tanto legales como ilegales).</p>
+            </div>
+
+            <!-- SECCIÓN 2: ARMERÍA -->
+            <div id="armeria" class="norm-section searchable-block" data-category="delictual">
+                <h1>Armería</h1>
+                <div class="meta-info">
+                    <span>🕒 Actualizado: Reciente</span>
+                    <span class="badge-vigente">🟢 Oficial y Vigente</span>
+                </div>
+                <p style="margin-bottom: 25px;">Regulaciones del uso de armas dentro de las Organizaciones delictuales.</p>
+
+                <div class="concept-item searchable-item">
+                    <h3>Uso de armas en Alertas</h3>
+                    <p>Dentro del servidor hay alertas las cuales las cambia el moderador por mensajes ":h" dentro de la apertura. Cada alerta establece el calibre máximo para usar a las Organizaciones Delictuales.</p>
+
+                    <h3 style="margin-top: 15px; font-size: 1.05rem;">Alerta Roja</h3>
+                    <p>Dentro de la alerta roja se les permite uso de Calibre Alto a las organizaciones delictuales. Cabe aclarar que deben tener comprada el arma.</p>
+                    
+                    <h3 style="margin-top: 15px; font-size: 1.05rem;">Alerta Amarilla</h3>
+                    <p>Dentro de la alerta amarilla se les permite uso máximo de Calibre Medio. Deberás tener el arma comprada para utilizarla.</p>
+                    
+                    <h3 style="margin-top: 15px; font-size: 1.05rem;">Alerta Neutral</h3>
+                    <p>Dentro de la alerta neutral solo se permite uso de armas de calibre bajo. Deberás tener el arma comprada para utilizarla y no se rolea <code>-/me prepara arma</code>.</p>
+                </div>
+
+                <div class="concept-item searchable-item">
+                    <h3>Venta y Tráfico de Armas</h3>
+                    <p>La venta de armas entre organizaciones delictuales debe realizarse mediante canales IC y deberán ser vendidas presencialmente. Para realizar un rol de envío de arma deberá rolear <code>-/me</code> y <code>-/do</code> de manera correcta.</p>
+                </div>
+
+                <div class="concept-item searchable-item">
+                    <h3>Pérdida de Arma</h3>
+                    <p>En caso de que al momento de bajarte de tu vehículo dejas tu arma ahí, deberás rolear el entorno de manera correcta. Una vez registrado que tu arma se quedó en el auto no podrás volver a registrarla hasta que rolees nuevamente el entorno de haberla sacado.</p>
+                </div>
+
+                <div class="concept-item searchable-item">
+                    <h3>Valor de las Armas</h3>
+                    <ul class="weapon-price-list">
+                        <li>Sniper <span>15,000,000 CLP</span></li>
+                        <li>AK-47 <span>13,000,000 CLP</span></li>
+                        <li>Skorpion <span>9,000,000 CLP</span></li>
+                        <li>Tec-9 <span>7,000,000 CLP</span></li>
+                        <li>Vector <span>9,500,000 CLP</span></li>
+                        <li>Colt Python <span>3,000,000 CLP</span></li>
+                        <li>Beretta M9 <span>900,000 CLP</span></li>
+                        <li>Colt M1911 <span>1,400,000 CLP</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- SECCIÓN 3: REGLAMENTO OD -->
+            <div id="reglamento-od" class="norm-section searchable-block" data-category="delictual">
+                <h1>Reglamento OD</h1>
+                <div class="meta-info">
+                    <span>🕒 Actualizado: Reciente</span>
+                    <span class="badge-vigente">🟢 Oficial y Vigente</span>
+                </div>
+                <p style="margin-bottom: 25px;">Normas de convivencia, jerarquía y límites operativos para las Organizaciones Delictuales.</p>
+
+                <div class="concept-item searchable-item">
+                    <h3>Registro de Facción</h3>
+                    <p>Al momento de registrar tu organización delictual deberás especificar su territorio, color, integrantes, historia, etc. En caso de que tu facción ilegal sea desmantelada se le realizará CK a los integrantes de esta, excepto a los 2 rangos más altos dentro de su jerarquía.</p>
+                </div>
+
+                <div class="concept-item searchable-item">
+                    <h3>Alianzas y Guerras</h3>
+                    <p>Las alianzas o guerras entre facciones ilegales deben ser notificadas y justificadas adecuadamente mediante roles previos. No se permiten ataques masivos sin un contexto que sustente el conflicto.</p>
+                </div>
+
+                <div class="concept-item searchable-item">
+                    <h3>Robos y Asaltos</h3>
+                    <p>Se deben respetar los cupos máximos permitidos por la administración para atracos, secuestros y enfrentamientos, manteniendo siempre la balanza frente a las fuerzas del orden (Facciones Legales).</p>
+                </div>
+
+                <div class="concept-item searchable-item">
+                    <h3>Incumplir Normativas Generales del Servidor</h3>
+                    <p>Las organizaciones delictuales deberán cumplir las normativas dentro del servidor. Cualquier infracción y sanción recibida por más de 3 miembros de la OD los llevará a un strike.</p>
+                </div>
+            </div>
+
+            <!-- SECCIÓN 4: INFORMACIÓN OD -->
+            <div id="informacion-od" class="norm-section searchable-block" data-category="delictual">
+                <h1>Información OD</h1>
+                <div class="meta-info">
+                    <span>🕒 Actualizado: Reciente</span>
+                    <span class="badge-vigente">🟢 Oficial y Vigente</span>
+                </div>
+                <p style="margin-bottom: 25px;">Datos clave, beneficios y requisitos generales para la conformación y postulación de bandas u organizaciones.</p>
+
+                <div class="concept-item searchable-item">
+                    <h3>Postulación de Nuevas Bandas</h3>
+                    <p>Los usuarios interesados en liderar o crear una nueva organización delictual deberán esperar a la apertura del formulario de creación de banda. Se pueden realizar excepciones cuando se necesitan bandas dentro del servidor.</p>
+                </div>
+
+                <div class="concept-item searchable-item">
+                    <h3>Territorio OD</h3>
+                    <p>Al momento de ingresar al territorio de una organización delictual se te podrá cachear y robar artículos como llaves del auto, DNI, dinero bancario, y podrás recibir un CK con solamente 2 motivos justificados.</p>
+                </div>
+
+                <div class="concept-item searchable-item">
+                    <h3>Supervisión Administrativa</h3>
+                    <p>Las actividades de las OD son monitoreadas de cerca por el staff del servidor. Cualquier conducta tóxica, incumplimiento reiterado de normativas de entorno o abuso de mecánicas derivará en el cierre inmediato de la facción y sanciones a sus miembros.</p>
+                </div>
+            </div>
+
+            <!-- SECCIÓN 5: ZONAS ROJAS Y ATRACOS -->
+            <div id="zonas-rojas" class="norm-section searchable-block" data-category="delictual">
+                <h1>Zonas Rojas y Atracos</h1>
+                <div class="meta-info">
+                    <span>🕒 Actualizado: Reciente</span>
+                    <span class="badge-vigente">🟢 Oficial y Vigente</span>
+                </div>
+                <p style="margin-bottom: 25px;">Directrices operativas para atracos a comercios, bancos y zonas de alta peligrosidad.</p>
+
+                <div class="concept-item searchable-item">
+                    <h3>Normativa de Atracos</h3>
+                    <p>Para iniciar cualquier atraco (tiendas, joyerías, bancos), se debe cumplir obligatoriamente con el mínimo de funcionarios policiales conectados y el envío previo de los entornos correspondientes mediante el comando <code>/entorno</code>.</p>
+                </div>
+
+                <div class="concept-item searchable-item">
+                    <h3>Uso de Rehenes</h3>
+                    <p>Los rehenes deben ser civiles legítimos obtenidos mediante rol válido. Queda estrictamente prohibido utilizar amigos y/o cómplices como rehenes para facilitar el robo.</p>
+                </div>
+
+                <div class="concept-item searchable-item">
+                    <h3>Negociaciones y Persecuciones</h3>
+                    <p>Tanto criminales como fuerzas policiales deben mantener una negociación realista. Las emboscadas premeditadas fuera de los tiempos acordados o el incumplimiento de los acuerdos de ruta limpia se consideran faltas graves.</p>
+                </div>
+            </div>
+        </content-area>
+    </div>
+
+    <!-- Script de navegación, categorías y menú móvil -->
+    <script>
+        const dropdownMenu = document.getElementById('dropdownMenu');
+        const dropBtn = document.getElementById('dropBtn');
+        const menuLateral = document.getElementById('menuLateral');
+        const sidebarTitleCategory = document.getElementById('sidebarTitleCategory');
+        const sections = document.querySelectorAll('.norm-section');
+        const buscador = document.getElementById('buscadorNormas');
+        const menuBtn = document.getElementById('menuBtn');
+        const sidebarMenu = document.getElementById('sidebarMenu');
+
+        const catData = {
+            titulo: "Normativa Delictual",
+            items: [
+                { target: "introduccion", texto: "Introducción" },
+                { target: "armeria", texto: "Armería" },
+                { target: "reglamento-od", texto: "Reglamento OD" },
+                { target: "informacion-od", texto: "Información OD" },
+                { target: "zonas-rojas", texto: "Zonas Rojas y Atracos" }
+            ]
+        };
+
+        // Mostrar u ocultar menú desplegable superior
+        dropBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            dropdownMenu.classList.toggle('show');
+        });
+
+        window.addEventListener('click', () => {
+            if (dropdownMenu.classList.contains('show')) {
+                dropdownMenu.classList.remove('show');
+            }
+        });
+
+        function cargarSidebar() {
+            sidebarTitleCategory.textContent = catData.titulo;
+            menuLateral.innerHTML = '';
+
+            catData.items.forEach((item, index) => {
+                const li = document.createElement('li');
+                const a = document.createElement('a');
+                a.href = '#';
+                a.setAttribute('data-target', item.target);
+                a.textContent = item.texto;
+                if(index === 0) a.classList.add('active');
+                li.appendChild(a);
+                menuLateral.appendChild(li);
+            });
+
+            vincularEventosSidebar();
+        }
+
+        function vincularEventosSidebar() {
+            const nuevosLinks = document.querySelectorAll('#menuLateral a');
+            nuevosLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    nuevosLinks.forEach(l => l.classList.remove('active'));
+                    sections.forEach(s => s.classList.remove('active'));
+
+                    link.classList.add('active');
+                    const targetId = link.getAttribute('data-target');
+                    document.getElementById(targetId).classList.add('active');
+                    
+                    buscador.value = '';
+                    filtrarBusqueda('');
+
+                    if(window.innerWidth <= 768) {
+                        sidebarMenu.classList.remove('mobile-open');
+                    }
+                });
+            });
+        }
+
+        cargarSidebar();
+
+        // Control del menú hamburguesa en móvil
+        menuBtn.addEventListener('click', () => {
+            sidebarMenu.classList.toggle('mobile-open');
+        });
+
+        // Lógica del buscador en tiempo real
+        buscador.addEventListener('input', (e) => {
+            const termino = e.target.value.toLowerCase().trim();
+            filtrarBusqueda(termino);
+        });
+
+        function filtrarBusqueda(termino) {
+            if (termino.length > 0) {
+                sections.forEach(section => {
+                    section.classList.add('active');
+                    const items = section.querySelectorAll('.searchable-item');
+                    
+                    items.forEach(item => {
+                        const texto = item.textContent.toLowerCase();
+                        if (texto.includes(termino)) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            } else {
+                const activeLink = document.querySelector('#menuLateral a.active');
+                if(activeLink) {
+                    const targetId = activeLink.getAttribute('data-target');
+                    sections.forEach(section => {
+                        if (section.id === targetId) {
+                            section.classList.add('active');
+                        } else {
+                            section.classList.remove('active');
+                        }
+                        section.querySelectorAll('.searchable-item').forEach(item => {
+                            item.style.display = 'block';
+                        });
+                    });
+                }
+            }
+        }
+    </script>
+</body>
+</html>
