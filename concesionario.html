@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Concesionario - Altamar RolePlay</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/style.css">
     <style>
         .norm-section { display: none; }
         .norm-section.active { display: block; }
 
-        /* Estilos para el menú desplegable superior */
         .dropdown {
             position: relative;
             display: inline-block;
@@ -66,46 +65,18 @@
         .dropdown.show .dropdown-content {
             display: block;
         }
-
-        /* Contenedor de aviso en construcción */
-        .coming-soon-box {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 40px 30px;
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .coming-soon-box h2 {
-            color: var(--text-main);
-            margin-top: 0;
-            margin-bottom: 15px;
-            font-size: 1.5rem;
-        }
-
-        .coming-soon-box p {
-            color: var(--text-muted);
-            font-size: 1rem;
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.6;
-        }
     </style>
 </head>
 <body>
 
-    <!-- Barra de navegación superior -->
     <header>
         <div style="display: flex; align-items: center; gap: 15px;">
-            <!-- Botón de menú para celulares -->
             <button class="menu-toggle" id="menuBtn">☰</button>
             <div class="logo-area">ALTAMAR ROLEPLAY COMMUNITY</div>
         </div>
         <ul class="nav-links">
             <li><a href="index.html">Inicio</a></li>
             
-            <!-- Menú Desplegable con redirección de páginas -->
             <li class="dropdown" id="dropdownMenu">
                 <button class="dropbtn active" id="dropBtn">Concesionario ▾</button>
                 <div class="dropdown-content">
@@ -121,39 +92,32 @@
         </ul>
     </header>
 
-    <!-- Cuerpo principal -->
     <div class="main-layout">
-        <!-- Sidebar lateral -->
         <sidebar id="sidebarMenu">
             <div class="sidebar-title" id="sidebarTitleCategory">Concesionario</div>
-            <ul class="sidebar-menu" id="menuLateral">
-                <!-- Se inyectarán dinámicamente -->
-            </ul>
+            <ul class="sidebar-menu" id="menuLateral"></ul>
         </sidebar>
 
-        <!-- Contenido principal -->
         <content-area>
             <div class="search-bar">
                 <input type="text" placeholder="Buscar en concesionario..." id="buscadorNormas">
             </div>
 
-            <!-- SECCIÓN: CONCESIONARIO -->
             <div id="concesionario-main" class="norm-section active searchable-block" data-category="concesionario">
                 <h1>Concesionario</h1>
                 <div class="meta-info">
-                    <span>🕒 Actualizado: Reciente</span>
-                    <span class="badge-vigente">🟢 Oficial y Vigente</span>
+                    <span>🕒 Estado: En Desarrollo</span>
+                    <span class="badge-vigente">🟢 Próximamente</span>
                 </div>
 
-                <div class="coming-soon-box searchable-item">
-                    <h3>Próximamente</h3>
-                    <p>La Administración de Altamar RolePlay Community está trabajando para darte una mejor experiencia.</p>
+                <div class="maintenance-container searchable-item">
+                    <h2>En Mantenimiento</h2>
+                    <p>Equipo Administrativo Altamar RolePlay está trabajando en este servicio para traerte los mejores vehículos y catálogos muy pronto.</p>
                 </div>
             </div>
         </content-area>
     </div>
 
-    <!-- Script de navegación, categorías y menú móvil -->
     <script>
         const dropdownMenu = document.getElementById('dropdownMenu');
         const dropBtn = document.getElementById('dropBtn');
@@ -171,22 +135,18 @@
             ]
         };
 
-        // Mostrar u ocultar menú desplegable superior
         dropBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             dropdownMenu.classList.toggle('show');
         });
 
         window.addEventListener('click', () => {
-            if (dropdownMenu.classList.contains('show')) {
-                dropdownMenu.classList.remove('show');
-            }
+            if (dropdownMenu.classList.contains('show')) dropdownMenu.classList.remove('show');
         });
 
         function cargarSidebar() {
             sidebarTitleCategory.textContent = catData.titulo;
             menuLateral.innerHTML = '';
-
             catData.items.forEach((item, index) => {
                 const li = document.createElement('li');
                 const a = document.createElement('a');
@@ -197,58 +157,33 @@
                 li.appendChild(a);
                 menuLateral.appendChild(li);
             });
-
             vincularEventosSidebar();
         }
 
         function vincularEventosSidebar() {
-            const nuevosLinks = document.querySelectorAll('#menuLateral a');
-            nuevosLinks.forEach(link => {
+            document.querySelectorAll('#menuLateral a').forEach(link => {
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
-                    nuevosLinks.forEach(l => l.classList.remove('active'));
+                    document.querySelectorAll('#menuLateral a').forEach(l => l.classList.remove('active'));
                     sections.forEach(s => s.classList.remove('active'));
-
                     link.classList.add('active');
-                    const targetId = link.getAttribute('data-target');
-                    document.getElementById(targetId).classList.add('active');
-                    
+                    document.getElementById(link.getAttribute('data-target')).classList.add('active');
                     buscador.value = '';
-                    filtrarBusqueda('');
-
-                    if(window.innerWidth <= 768) {
-                        sidebarMenu.classList.remove('mobile-open');
-                    }
+                    if(window.innerWidth <= 768) sidebarMenu.classList.remove('mobile-open');
                 });
             });
         }
 
         cargarSidebar();
+        menuBtn.addEventListener('click', () => sidebarMenu.classList.toggle('mobile-open'));
 
-        // Control del menú hamburguesa en móvil
-        menuBtn.addEventListener('click', () => {
-            sidebarMenu.classList.toggle('mobile-open');
-        });
-
-        // Lógica del buscador en tiempo real
         buscador.addEventListener('input', (e) => {
             const termino = e.target.value.toLowerCase().trim();
-            filtrarBusqueda(termino);
-        });
-
-        function filtrarBusqueda(termino) {
             if (termino.length > 0) {
                 sections.forEach(section => {
                     section.classList.add('active');
-                    const items = section.querySelectorAll('.searchable-item');
-                    
-                    items.forEach(item => {
-                        const texto = item.textContent.toLowerCase();
-                        if (texto.includes(termino)) {
-                            item.style.display = 'block';
-                        } else {
-                            item.style.display = 'none';
-                        }
+                    section.querySelectorAll('.searchable-item').forEach(item => {
+                        item.style.display = item.textContent.toLowerCase().includes(termino) ? 'block' : 'none';
                     });
                 });
             } else {
@@ -256,18 +191,12 @@
                 if(activeLink) {
                     const targetId = activeLink.getAttribute('data-target');
                     sections.forEach(section => {
-                        if (section.id === targetId) {
-                            section.classList.add('active');
-                        } else {
-                            section.classList.remove('active');
-                        }
-                        section.querySelectorAll('.searchable-item').forEach(item => {
-                            item.style.display = 'block';
-                        });
+                        section.classList.toggle('active', section.id === targetId);
+                        section.querySelectorAll('.searchable-item').forEach(item => item.style.display = 'block');
                     });
                 }
             }
-        }
+        });
     </script>
 </body>
 </html>
