@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concesionario - Altamar RolePlay</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .norm-section { display: none; }
+        .norm-section.active { display: block; }
+
+        /* Estilos para el menú desplegable superior */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropbtn {
+            background-color: transparent;
+            color: var(--text-muted);
+            border: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-family: inherit;
+            transition: color 0.2s;
+        }
+
+        .dropbtn:hover, .dropbtn.active {
+            color: var(--text-main);
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--bg-card);
+            min-width: 220px;
+            box-shadow: 0px 8px 24px rgba(0,0,0,0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            z-index: 1000;
+            padding: 8px 0;
+            margin-top: 10px;
+        }
+
+        .dropdown-content a {
+            color: var(--text-muted);
+            padding: 10px 18px;
+            text-decoration: none;
+            display: block;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .dropdown-content a:hover {
+            background-color: rgba(37, 99, 235, 0.15);
+            color: var(--text-main);
+        }
+
+        .dropdown.show .dropdown-content {
+            display: block;
+        }
+
+        /* Contenedor de aviso en construcción */
+        .coming-soon-box {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 40px 30px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .coming-soon-box h2 {
+            color: var(--text-main);
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .coming-soon-box p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Barra de navegación superior -->
+    <header>
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <!-- Botón de menú para celulares -->
+            <button class="menu-toggle" id="menuBtn">☰</button>
+            <div class="logo-area">ALTAMAR ROLEPLAY COMMUNITY</div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Inicio</a></li>
+            
+            <!-- Menú Desplegable con redirección de páginas -->
+            <li class="dropdown" id="dropdownMenu">
+                <button class="dropbtn active" id="dropBtn">Concesionario ▾</button>
+                <div class="dropdown-content">
+                    <a href="normativa.html">Normativas Generales</a>
+                    <a href="delictual.html">Normativa Delictual</a>
+                    <a href="concesionario.html">Concesionario</a>
+                    <a href="codigo-penal.html">Código Penal</a>
+                </div>
+            </li>
+
+            <li><a href="#">Tienda</a></li>
+            <li><a href="#">Equipo</a></li>
+        </ul>
+    </header>
+
+    <!-- Cuerpo principal -->
+    <div class="main-layout">
+        <!-- Sidebar lateral -->
+        <sidebar id="sidebarMenu">
+            <div class="sidebar-title" id="sidebarTitleCategory">Concesionario</div>
+            <ul class="sidebar-menu" id="menuLateral">
+                <!-- Se inyectarán dinámicamente -->
+            </ul>
+        </sidebar>
+
+        <!-- Contenido principal -->
+        <content-area>
+            <div class="search-bar">
+                <input type="text" placeholder="Buscar en concesionario..." id="buscadorNormas">
+            </div>
+
+            <!-- SECCIÓN: CONCESIONARIO -->
+            <div id="concesionario-main" class="norm-section active searchable-block" data-category="concesionario">
+                <h1>Concesionario</h1>
+                <div class="meta-info">
+                    <span>🕒 Actualizado: Reciente</span>
+                    <span class="badge-vigente">🟢 Oficial y Vigente</span>
+                </div>
+
+                <div class="coming-soon-box searchable-item">
+                    <h3>Próximamente</h3>
+                    <p>La Administración de Altamar RolePlay Community está trabajando para darte una mejor experiencia.</p>
+                </div>
+            </div>
+        </content-area>
+    </div>
+
+    <!-- Script de navegación, categorías y menú móvil -->
+    <script>
+        const dropdownMenu = document.getElementById('dropdownMenu');
+        const dropBtn = document.getElementById('dropBtn');
+        const menuLateral = document.getElementById('menuLateral');
+        const sidebarTitleCategory = document.getElementById('sidebarTitleCategory');
+        const sections = document.querySelectorAll('.norm-section');
+        const buscador = document.getElementById('buscadorNormas');
+        const menuBtn = document.getElementById('menuBtn');
+        const sidebarMenu = document.getElementById('sidebarMenu');
+
+        const catData = {
+            titulo: "Concesionario",
+            items: [
+                { target: "concesionario-main", texto: "Catálogo General" }
+            ]
+        };
+
+        // Mostrar u ocultar menú desplegable superior
+        dropBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            dropdownMenu.classList.toggle('show');
+        });
+
+        window.addEventListener('click', () => {
+            if (dropdownMenu.classList.contains('show')) {
+                dropdownMenu.classList.remove('show');
+            }
+        });
+
+        function cargarSidebar() {
+            sidebarTitleCategory.textContent = catData.titulo;
+            menuLateral.innerHTML = '';
+
+            catData.items.forEach((item, index) => {
+                const li = document.createElement('li');
+                const a = document.createElement('a');
+                a.href = '#';
+                a.setAttribute('data-target', item.target);
+                a.textContent = item.texto;
+                if(index === 0) a.classList.add('active');
+                li.appendChild(a);
+                menuLateral.appendChild(li);
+            });
+
+            vincularEventosSidebar();
+        }
+
+        function vincularEventosSidebar() {
+            const nuevosLinks = document.querySelectorAll('#menuLateral a');
+            nuevosLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    nuevosLinks.forEach(l => l.classList.remove('active'));
+                    sections.forEach(s => s.classList.remove('active'));
+
+                    link.classList.add('active');
+                    const targetId = link.getAttribute('data-target');
+                    document.getElementById(targetId).classList.add('active');
+                    
+                    buscador.value = '';
+                    filtrarBusqueda('');
+
+                    if(window.innerWidth <= 768) {
+                        sidebarMenu.classList.remove('mobile-open');
+                    }
+                });
+            });
+        }
+
+        cargarSidebar();
+
+        // Control del menú hamburguesa en móvil
+        menuBtn.addEventListener('click', () => {
+            sidebarMenu.classList.toggle('mobile-open');
+        });
+
+        // Lógica del buscador en tiempo real
+        buscador.addEventListener('input', (e) => {
+            const termino = e.target.value.toLowerCase().trim();
+            filtrarBusqueda(termino);
+        });
+
+        function filtrarBusqueda(termino) {
+            if (termino.length > 0) {
+                sections.forEach(section => {
+                    section.classList.add('active');
+                    const items = section.querySelectorAll('.searchable-item');
+                    
+                    items.forEach(item => {
+                        const texto = item.textContent.toLowerCase();
+                        if (texto.includes(termino)) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            } else {
+                const activeLink = document.querySelector('#menuLateral a.active');
+                if(activeLink) {
+                    const targetId = activeLink.getAttribute('data-target');
+                    sections.forEach(section => {
+                        if (section.id === targetId) {
+                            section.classList.add('active');
+                        } else {
+                            section.classList.remove('active');
+                        }
+                        section.querySelectorAll('.searchable-item').forEach(item => {
+                            item.style.display = 'block';
+                        });
+                    });
+                }
+            }
+        }
+    </script>
+</body>
+</html>
