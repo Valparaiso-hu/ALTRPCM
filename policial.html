@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Policial - Altamar RolePlay</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        .norm-section { display: none; }
+        .norm-section.active { display: block; }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropbtn {
+            background-color: transparent;
+            color: var(--text-muted);
+            border: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-family: inherit;
+            transition: color 0.2s;
+        }
+
+        .dropbtn:hover, .dropbtn.active {
+            color: var(--text-main);
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--bg-card);
+            min-width: 220px;
+            box-shadow: 0px 8px 24px rgba(0,0,0,0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            z-index: 1000;
+            padding: 8px 0;
+            margin-top: 10px;
+        }
+
+        .dropdown-content a {
+            color: var(--text-muted);
+            padding: 10px 18px;
+            text-decoration: none;
+            display: block;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .dropdown-content a:hover {
+            background-color: rgba(37, 99, 235, 0.15);
+            color: var(--text-main);
+        }
+
+        .dropdown.show .dropdown-content {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <button class="menu-toggle" id="menuBtn">☰</button>
+            <div class="logo-area">ALTAMAR ROLEPLAY COMMUNITY - POLICIAL</div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="normativa.html">Volver a Normativa</a></li>
+        </ul>
+    </header>
+
+    <div class="main-layout">
+        <sidebar id="sidebarMenu">
+            <div class="sidebar-title">Panel Institucional</div>
+            <ul class="sidebar-menu">
+                <li><a href="#" class="active" id="linkMantenimiento">Aviso de Servicio</a></li>
+            </ul>
+        </sidebar>
+
+        <content-area>
+            <div style="max-width: 750px;">
+                <h1>Panel Policial</h1>
+                <div class="meta-info">
+                    <span>🕒 Estado: Optimización</span>
+                    <span class="badge-vigente" style="color: var(--text-muted);">⚫ Mantenimiento</span>
+                </div>
+                <p>Canal oficial de registro y control operativo para instituciones legales.</p>
+
+                <!-- CORREGIDO: Se usa la clase exacta 'maintenance-container' para el fondo negro y rainbow -->
+                <div class="maintenance-container">
+                    <h2>Mantenimiento del Sistema</h2>
+                    <p>Equipo Administrativo Altamar RolePlay está trabajando en este servicio para ofrecer una experiencia y optimización superior en los registros policiales.</p>
+                </div>
+            </div>
+        </content-area>
+    </div>
+
+    <script>
+        const menuBtn = document.getElementById('menuBtn');
+        const sidebarMenu = document.getElementById('sidebarMenu');
+        menuBtn.addEventListener('click', () => sidebarMenu.classList.toggle('mobile-open'));
+    </script>
+</body>
+</html>
