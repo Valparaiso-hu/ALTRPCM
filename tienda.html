@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda - Altamar RolePlay</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .norm-section { display: none; }
+        .norm-section.active { display: block; }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropbtn {
+            background-color: transparent;
+            color: var(--text-muted);
+            border: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-family: inherit;
+            transition: color 0.2s;
+        }
+
+        .dropbtn:hover, .dropbtn.active {
+            color: var(--text-main);
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--bg-card);
+            min-width: 220px;
+            box-shadow: 0px 8px 24px rgba(0,0,0,0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            z-index: 1000;
+            padding: 8px 0;
+            margin-top: 10px;
+        }
+
+        .dropdown-content a {
+            color: var(--text-muted);
+            padding: 10px 18px;
+            text-decoration: none;
+            display: block;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .dropdown-content a:hover {
+            background-color: rgba(37, 99, 235, 0.15);
+            color: var(--text-main);
+        }
+
+        .dropdown.show .dropdown-content {
+            display: block;
+        }
+
+        .btn-policial {
+            background-color: #ffffff;
+            color: #000000;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .btn-policial:hover {
+            background-color: #e2e8f0;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <button class="menu-toggle" id="menuBtn">☰</button>
+            <div class="logo-area">ALTAMAR ROLEPLAY COMMUNITY</div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Inicio</a></li>
+            
+            <li class="dropdown" id="dropdownMenu">
+                <button class="dropbtn" id="dropBtn">Normativas ▾</button>
+                <div class="dropdown-content">
+                    <a href="normativa.html">Normativas Generales</a>
+                    <a href="delictual.html">Normativa Delictual</a>
+                    <a href="concesionario.html">Concesionario</a>
+                    <a href="codigo-penal.html">Código Penal</a>
+                </div>
+            </li>
+
+            <li><a href="tienda.html" class="active">Tienda</a></li>
+            <li><a href="equipo.html">Equipo</a></li>
+            <li><a href="#" id="btnPdiCarab" class="btn-policial">PDI - CARAB</a></li>
+        </ul>
+    </header>
+
+    <div class="main-layout">
+        <sidebar id="sidebarMenu">
+            <div class="sidebar-title">Sección Comercial</div>
+            <ul class="sidebar-menu">
+                <li><a href="#" class="active">Tienda Oficial</a></li>
+            </ul>
+        </sidebar>
+
+        <content-area>
+            <div style="max-width: 750px;">
+                <h1>Tienda de la Comunidad</h1>
+                <div class="meta-info">
+                    <span>🕒 Estado: Próximamente</span>
+                    <span class="badge-vigente" style="color: var(--text-muted);">⚫ En Espera de Miembros</span>
+                </div>
+                <p>Adquisición de beneficios exclusivos y rangos VIP para la ciudad.</p>
+
+                <div class="maintenance-container">
+                    <h2>Sistema en Desarrollo</h2>
+                    <p>Este sistema se activará cuando el servidor alcance los 150 miembros.</p>
+                </div>
+            </div>
+        </content-area>
+    </div>
+
+    <script>
+        const dropdownMenu = document.getElementById('dropdownMenu');
+        const dropBtn = document.getElementById('dropBtn');
+        const menuBtn = document.getElementById('menuBtn');
+        const sidebarMenu = document.getElementById('sidebarMenu');
+
+        dropBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            dropdownMenu.classList.toggle('show');
+        });
+
+        window.addEventListener('click', () => {
+            if (dropdownMenu.classList.contains('show')) dropdownMenu.classList.remove('show');
+        });
+
+        menuBtn.addEventListener('click', () => sidebarMenu.classList.toggle('mobile-open'));
+    </script>
+</body>
+</html>
