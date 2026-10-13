@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Concesionario - Altamar RolePlay</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <style>
         .norm-section { display: none; }
         .norm-section.active { display: block; }
@@ -65,6 +65,94 @@
         .dropdown.show .dropdown-content {
             display: block;
         }
+
+        .brand-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .brand-logo {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.15));
+        }
+
+        .vehicle-hint {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            transition: border-color 0.2s;
+        }
+
+        .vehicle-hint:hover {
+            border-color: var(--accent);
+        }
+
+        .vehicle-summary {
+            padding: 18px 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 700;
+            color: var(--text-main);
+            font-size: 1.05rem;
+        }
+
+        .vehicle-summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .vehicle-summary::after {
+            content: '▼';
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            transition: transform 0.2s;
+        }
+
+        details[open] .vehicle-summary::after {
+            transform: rotate(180deg);
+        }
+
+        .vehicle-details {
+            padding: 0 20px 20px 20px;
+            border-top: 1px solid var(--border-color);
+            background-color: rgba(0, 0, 0, 0.2);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
+            padding-top: 15px;
+        }
+
+        .spec-box {
+            background-color: var(--bg-main);
+            padding: 10px 14px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+        }
+
+        .spec-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+            display: block;
+        }
+
+        .spec-value {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
     </style>
 </head>
 <body>
@@ -94,30 +182,785 @@
 
     <div class="main-layout">
         <sidebar id="sidebarMenu">
-            <div class="sidebar-title" id="sidebarTitleCategory">Concesionario</div>
-            <ul class="sidebar-menu" id="menuLateral"></ul>
+            <div class="sidebar-title" id="sidebarTitleCategory">Catálogo de Vehículos</div>
+            <ul class="sidebar-menu" id="menuLateral">
+                <!-- Se inyectará dinámicamente -->
+            </ul>
         </sidebar>
 
         <content-area>
             <div class="search-bar">
-                <input type="text" placeholder="Buscar en concesionario..." id="buscadorNormas">
+                <input type="text" placeholder="Buscar vehículo, marca o año..." id="buscadorNormas">
             </div>
 
-            <div id="concesionario-main" class="norm-section active searchable-block" data-category="concesionario">
-                <h1>Concesionario</h1>
-                <div class="meta-info">
-                    <span>🕒 Estado: En Desarrollo</span>
-                    <span class="badge-vigente">🟢 Próximamente</span>
+            <!-- ================= GAMA DEPORTIVA & HYPERCARS ================= -->
+            <div id="deportivos" class="norm-section active searchable-block" data-category="concesionario">
+                <div class="brand-header">
+                    <img src="https://cdn.worldvectorlogo.com/logos/bugatti-6.svg" alt="Deportivos Logo" class="brand-logo" style="filter: invert(1);">
+                    <h1>Gama Deportiva & Hypercars</h1>
+                    <p>Vehículos de alto rendimiento extremo, edición limitada y velocidad pura.</p>
                 </div>
 
-                <div class="maintenance-container searchable-item">
-                    <h2>En Mantenimiento</h2>
-                    <p>Equipo Administrativo Altamar RolePlay está trabajando en este servicio para traerte los mejores vehículos y catálogos muy pronto.</p>
+                <details class="vehicle-hint searchable-item">
+                    <summary class="vehicle-summary">Chevrolet Corvette C7 ZR1</summary>
+                    <div class="vehicle-details">
+                        <div class="spec-box"><span class="spec-label">Modelo</span><span class="spec-value">Corvette C7 ZR1</span></div>
+                        <div class="spec-box"><span class="spec-label">Año</span><span class="spec-value">2014</span></div>
+                        <div class="spec-box"><span class="spec-label">Precio</span><span class="spec-value">$70.000.000 CLP</span></div>
+                        <div class="spec-box"><span class="spec-label">Gama</span><span class="spec-value">Gama Deportiva</span></div>
+                    </div>
+                </details>
+
+                <details class="vehicle-hint searchable-item">
+                    <summary class="vehicle-summary">Chevrolet Corvette C8 Z06</summary>
+                    <div class="vehicle-details">
+                        <div class="spec-box"><span class="spec-label">Modelo</span><span class="spec-value">Corvette C8 Z06</span></div>
+                        <div class="spec-box"><span class="spec-label">Año</span><span class="spec-value">2023</span></div>
+                        <div class="spec-box"><span class="spec-label">Precio</span><span class="spec-value">$95.000.000 CLP</span></div>
+                        <div class="spec-box"><span class="spec-label">Gama</span><span class="spec-value">Gama Deportiva</span></div>
+                    </div>
+                </details>
+
+                <details class="vehicle-hint searchable-item">
+                    <summary class="vehicle-summary">Tesla Cybertruck</summary>
+                    <div class="vehicle-details">
+                        <div class="spec-box"><span class="spec-label">Modelo</span><span class="spec-value">Cybertruck</span></div>
+                        <div class="spec-box"><span class="spec-label">Año</span><span class="spec-value">2024</span></div>
+                        <div class="spec-box"><span class="spec-label">Precio</span><span class="spec-value">$200.000.000 CLP</span></div>
+                        <div class="spec-box"><span class="spec-label">Gama</span><span class="spec-value">Gama Deportiva</span></div>
+                    </div>
+                </details>
+
+                <details class="vehicle-hint searchable-item">
+                    <summary class="vehicle-summary">Acura NSX</summary>
+                    <div class="vehicle-details">
+                        <div class="spec-box"><span class="spec-label">Modelo</span><span class="spec-value">NSX</span></div>
+                        <div class="spec-box"><span class="spec-label">Año</span><span class="spec-value">2021</span></div>
+                        <div class="spec-box"><span class="spec-label">Precio</span><span class="spec-value">$84.000.000 CLP</span></div>
+                        <div class="spec-box"><span class="spec-label">Gama</span><span class="spec-value">Gama Deportiva</span></div>
+                    </div>
+                </details>
+
+                <details class="vehicle-hint searchable-item">
+                    <summary class="vehicle-summary">Ford GT</summary>
+                    <div class="vehicle-details">
+                        <div class="spec-box"><span class="spec-label">Modelo</span><span class="spec-value">GT</span></div>
+                        <div class="spec-box"><span class="spec-label">Año</span><span class="spec-value">2021</span></div>
+                        <div class="spec-box"><span class="spec-label">Precio</span><span class="spec-value">$80.000.000 CLP</span></div>
+                        <div class="spec-box"><span class="spec-label">Gama</span><span class="spec-value">Gama Deportiva</span></div>
+                    </div>
+                </details>
+
+                <details class="vehicle-hint searchable-item">
+                    <summary class="vehicle-summary">Audi R8</summary>
+                    <div class="vehicle-details">
+                        <div class="spec-box"><span class="spec-label">Modelo</span><span class="spec-value">R8</span></div>
+                        <div class="spec-box"><span class="spec-label">Año</span><span class="spec-value">2017</span></div>
+                        <div class="spec-box"><span class="spec-label">Precio</span><span class="spec-value">$85.000.000 CLP</span></div>
+                        <div class="spec-box"><span class="spec-label">Gama</span><span class="spec-value">Gama Deportiva</span></div>
+                    </div>
+                </details>
+
+                <details class="vehicle-hint searchable-item">
+                    <summary class="vehicle-summary">McLaren 675LT</summary>
+                    <div class="vehicle-details">
+                        <div class="spec-box"><span class="spec-label">Modelo</span><span class="spec-value">675LT</span></div>
+                        <div class="spec-box"><span class="spec-label">Año</span><span class="spec-value">2016</span></div>
+                        <div class="spec-box"><span class="spec-label">Precio</span><span class="spec-value">$104.000.000 CLP</span></div>
+                        <div class="spec-box"><span class="spec-label">Gama</span><span class="spec-value">Gama Deportiva</span></div>
+                    </div>
+                </details>
+
+                <details class="vehicle-hint searchable-item">
+                    <summary class="vehicle-summary">Bugatti Chiron Pur Sport</summary>
+                    <div class="vehicle-details">
+                        <div class="spec-box"><span class="spec-label">Modelo</span><span class="spec-value">Chiron Pur Sport</span></div>
+                        <div class="spec-box"><span class="spec-label">Año</span><span class="spec-value">2020</span></div>
+                        <div class="spec-box"><span class="spec-label">Precio</span><span class="spec-value">$150.000.000 CLP</span></div>
+                        <div class="spec-box"><span class="spec-label">Gama</span><span class="spec-value">Gama Deportiva</span></div>
+                    </div>
+                </details>
+            </div>
+
+            <!-- ================= CHEVROLET ================= -->
+            <div id="chevrolet" class="norm-section searchable-block" data-category="concesionario">
+                <div class="brand-header">
+                    <img src="https://cdn.worldvectorlogo.com/logos/chevrolet-9.svg" alt="Chevrolet Logo" class="brand-logo">
+                    <h1>Chevrolet</h1>
+                    <p>Modelos de gama baja, media, alta y deportiva disponibles en la ciudad.</p>
                 </div>
+
+                <details class="vehicle-hint searchable-item">
+                    <summary class="vehicle-summary">Chevrolet Impala</summary>
+                    <div class="vehicle-details">
+                        <div class="spec-box"><span class="spec-label">Modelo</span><span class="spec-value">Impala</span></div>
+                        <div class="spec-box"><span class="spec-label">Año</span><span class="spec-value">1994</span></div>
+                        <div class="spec-box"><span class="spec-label">Precio</span><span class="spec-value">$2.500.000 CLP</span></div>
+                        <div class="spec-box"><span class="spec-label">Gama</span><span class="spec-value">Gama Baja</span></div>
+                    </div>
+                </details>
+
+                <details class="vehicle-hint searchable-item">
+                    <summary class="vehicle-summary">Chevrolet Tahoe (2002)</summary>
+                    <div class="vehicle-details">
+                        <div class="spec-box"><span class="spec-label">Modelo</span><span class="spec-value">Tahoe</span></div>
+                        <div class="spec-box"><span class="spec-label">Año</span><span class="spec-value">2002</span></div>
+                        <div class="spec-box"><span class="spec-label">Precio</span><span class="spec-value">$4.500.000 CLP</span></div>
+                        <div class="spec-box"><span class="spec-label">Gama</span><span class="spec-value">Gama Media</span></div>
+                    </div>
+                </details>
+
+                <details class="vehicle-hint searchable-item">
+                    <summary class="vehicle-summary">Chevrolet Tahoe (2008)</summary>
+                    <div class="vehicle-details">
+                        <div class="spec-box"><span class="spec-label">Modelo</span><span class="spec-value">Tahoe</span></div>
+                        <div class="spec-box"><span class="spec-label">Año</span><span class="spec-value">2008</span></div>
+                        <div class="spec-box"><span class="spec-label">Precio</span><span class="spec-value">$8.000.000 CLP</span></div>
+                        <div class="spec-box"><span class="spec-label">Gama</span><span class="spec-value">Gama Media</span></div>
+                    </div>
+                </details>
+
+                <details class="vehicle-hint searchable-item">
+                    <summary class="vehicle-summary">Chevrolet Tahoe (2018)</summary>
+                    <div class="vehicle-details">
+                        <div class="spec-box"><span class="spec-label">Modelo</span><span class="spec-value">Tahoe</span></div>
+                        <div class="spec-box"><span class="spec-label">Año</span><span class="spec-value">2018</span></div>
+                        <div class="spec-box"><span class="spec-label">Precio</span><span class="spec-value">$12.000.000 CLP</span></div>
+                        <div class="spec-box"><span class="spec-label">Gama</span><span class="spec-value">Gama Alta</span></div>
+                    </div>
+                </details>
+
+                <details class="vehicle-hint searchable-item">
+                    <summary class="vehicle-summary">Chevrolet Tahoe (2021)</summary>
+                    <div class="vehicle-details">
+                        <div class="spec-box"><span class="spec-label">Modelo</span><span class="spec-value">Tahoe</span></div>
+                        <div class="spec-box"><span class="spec-label">Año</span><span class="spec-value">2021</span></div>
+                        <div class="spec-box"><span class="spec-label">Precio</span><span class="spec-value">$50.000.000 CLP</span></div>
+                        <div class="spec-box"><span class="spec-label">Gama</span><span class="spec-value">Gama Alta</span></div>
+                    </div>
+                </details>
+
+                <details class="vehicle-hint searchable-item">
+                    <summary class="vehicle-summary">Chevrolet Silverado</summary>
+                    <div class="vehicle-details">
+                        <div class="spec-box"><span class="spec-label">Modelo</span><span class="spec-value">Silverado</span></div>
+                        <div class="spec-box"><span class="spec-label">Año</span><span class="spec-value">2019</span></div>
+                        <div class="spec-box"><span class="spec-label">Precio</span><span class="spec-value">$16.000.000 CLP</span></div>
+                        <div class="spec-box"><span class="spec-label">Gama</span><span class="spec-value">Gama Media</span></div>
+                    </div>
+                </details>
+
+                <details class="vehicle-hint searchable-item">
+                    <summary class="vehicle-summary">Chevrolet Avalanche</summary>
+                    <div class="vehicle-details">
+                        <div class="spec-box"><span class="spec-label">Modelo</span><span class="spec-value">Avalanche</span></div>
+                        <div class="spec-box"><span class="spec-label">Año</span><span class="spec-value">2008</span></div>
+                        <div class="spec-box"><span class="spec-label">Precio</span><span class="spec-value">$9.000.000 CLP</span></div>
+                        <div class="spec-box"><span class="spec-label">Gama</span><span class="spec-value">Gama Media</span></div>
+                    </div>
+                </details>
+
+                <details class="vehicle-hint searchable-item">
+                    <summary class="vehicle-summary">Chevrolet Express</summary>
+                    <div class="vehicle-details">
+                        <div class="spec-box"><span class="spec-label">Modelo</span><span class="spec-value">Express</span></div>
+                        <div class="spec-box"><span class="spec-label">Año</span><span class="spec-value">2006</span></div>
+                        <div class="spec-box"><span class="spec-label">Precio</span><span class="spec-value">$6.000.000 CLP</span></div>
+                        <div class="spec-box"><span class="spec-label">Gama</span><span class="spec-value">Gama Baja</span></div>
+                    </div>
+                </details>
+
+                <details class="vehicle-hint searchable-item">
+                    <summary class="vehicle-summary">Chevrolet Express 1500 Cargo</summary>
+                    <div class="vehicle-details">
+                        <div class="spec-box"><span class="spec-label">Modelo</span><span class="spec-value">Express 1500 Cargo</span></div>
+                        <div class="spec-box"><span class="spec-label">Año</span><span class="spec-value">2006</span></div>
+                        <div class="spec-box"><span class="spec-label">Precio</span><span class="spec-value">$18.000.000 CLP</span></div>
+                        <div class="spec-box"><span class="spec-label">Gama</span><span class="spec-value">Gama Media</span></div>
+                    </div>
+                </details>
+
+                <details class="vehicle-hint searchable-item">
+                    <summary class="vehicle-summary">Chevrolet Camaro</summary>
+                    <div class="vehicle-details">
+                        <div class="spec-box"><span class="spec-label">Modelo</span><span class="spec-value">Camaro</span></div>
+                        <div class="spec-box"><span class="spec-label">Año</span><span class="spec-value">2011</span></div>
+                        <div class="spec-box"><span class="spec-label">Precio</span><span class="spec-value">$20.000.000 CLP</span></div>
+                        <div class="spec-box"><span class="spec-label">Gama</span><span class="spec-value">Gama Deportiva</span></div>
+                    </div>
+                </details>
+
+                <details class="vehicle-hint searchable-item">
+                    <summary class="vehicle-summary">Chevrolet Camaro SS</summary>
+                    <div class="vehicle-details">
+                        <div class="spec-box"><span class="spec-label">Modelo</span><span class="spec-value">Camaro SS</span></div>
+                        <div class="spec-box"><span class="spec-label">Año</span><span class="spec-value">2016</span></div>
+                        <div class="spec-box"><span class="spec-label">Precio</span><span class="spec-value">$30.000.000 CLP</span></div>
+                        <div class="spec-box"><span class="spec-label">Gama</span><span class="spec-value">Gama Alta</span></div>
+                    </div>
+                </details>
+
+                <details class="vehicle-hint searchable-item">
+                    <summary class="vehicle-summary">Chevrolet Camaro ZL1</summary>
+                    <div class="vehicle-details">
+                        <div class="spec-box"><span class="spec-label">Modelo</span><span class="spec-value">Camaro ZL1</span></div>
+                        <div class="spec-box"><span class="spec-label">Año</span><span class="spec-value">2016</span></div>
+                        <div class="spec-box"><span class="spec-label">Precio</span><span class="spec-value">$25.000.000 CLP</span></div>
+                        <div class="spec-box"><span class="spec-label">Gama</span><span class="spec-value">Gama Alta</span></div>
+                    </div>
+                </details>
+
+                <details class="vehicle-hint searchable-item">
+                    <summary class="vehicle-summary">Chevrolet K10</summary>
+                    <div class="vehicle-details">
+                        <div class="spec-box"><span class="spec-label">Modelo</span><span class="spec-value">K10</span></div>
+                        <div class="spec-box"><span class="spec-label">Año</span><span class="spec-value">1984</span></div>
+                        <div class="spec-box"><span class="spec-label">Precio</span><span class="spec-value">$6.500.000 CLP</span></div>
+                        <div class="spec-box"><span class="spec-label">Gama</span><span class="spec-value">Gama Baja</span></div>
+                    </div>
+                </details>
+
+                <details class="vehicle-hint searchable-item">
+                    <summary class="vehicle-summary">Chevrolet C-10</summary>
+                    <div class="vehicle-details">
+                        <div class="spec-box"><span class="spec-label">Modelo</span><span class="spec-value">C-10</span></div>
+                        <div class="spec-box"><span class="spec-label">Año</span><span class="spec-value">1981</span></div>
+                        <div class="spec-box"><span class="spec-label">Precio</span><span class="spec-value">$7.000.000 CLP</span></div>
+                        <div class="spec-box"><span class="spec-label">Gama</span><span class="spec-value">Gama Baja</span></div>
+                    </div>
+                </details>
+            </div>
+
+            <!-- ================= FORD ================= -->
+            <div id="ford" class="norm-section searchable-block" data-category="concesionario">
+                <div class="brand-header">
+                    <img src="https://cdn.worldvectorlogo.com/logos/ford-6.svg" alt="Ford Logo" class="brand-logo" style="filter: invert(1);">
+                    <h1>Ford</h1>
+                    <p>Innovación, fuerza y rendimiento superior en carretera y off-road.</p>
+                </div>
+
+                <details class="vehicle-hint searchable-item">
+                    <summary class="vehicle-summary">Ford F-150 (2018)</summary>
+                    <div class="vehicle-details">
+                        <div class="spec-box"><span class="spec-label">Modelo</span><span class="spec-value">F150</span></div>
+                        <div class="spec-box"><span class="spec-label">Año</span><span class="spec-value">2018</span></div>
+                        <div class="spec-box"><span class="spec-label">Precio</span><span class="spec-value">$24.000.000 CLP</span></div>
+                        <div class="spec-box"><span class="spec-label">Gama</span><span class="spec-value">Gama Alta</span></div>
+                    </div>
+                </details>
+
+                <details class="vehicle-hint searchable-item">
+                    <summary class="vehicle-summary">Ford F-150 (2022)</summary>
+                    <div class="vehicle-details">
+                        <div class="spec-box"><span class="spec-label">Modelo</span><span class="spec-value">F150</span></div>
+                        <div class="spec-box"><span class="spec-label">Año</span><span class="spec-value">2022</span></div>
+                        <div class="spec-box"><span class="spec-label">Precio</span><span class="spec-value">$30.000.000 CLP</span></div>
+                        <div class="spec-box"><span class="spec-label">Gama</span><span class="spec-value">Gama Alta</span></div>
+                    </div>
+                </details>
+
+                <details class="vehicle-hint searchable-item">
+                    <summary class="vehicle-summary">Ford Mustang Shelby GT350</summary>
+                    <div class="vehicle-details">
+                        <div class="spec-box"><span class="spec-label">Modelo</span><span class="spec-value">Mustang Shelby GT350</span></div>
+                        <div class="spec-box"><span class="spec-label">Año</span><span class="spec-value">2015</span></div>
+                        <div class="spec-box"><span class="spec-label">Precio</span><span class="spec-value">$29.000.000 CLP</span></div>
+                        <div class="spec-box"><span class="spec-label">Gama</span><span class="spec-value">Gama Alta</span></div>
+                    </div>
+                </details>
+
+                <details class="vehicle-hint searchable-item">
+                    <summary class="vehicle-summary">Ford Raptor</summary>
+                    <div class="vehicle-details">
+                        <div class="spec-box"><span class="spec-label">Modelo</span><span class="spec-value">Raptor</span></div>
+                        <div class="spec-box"><span class="spec-label">Año</span><span class="spec-value">2017</span></div>
+                        <div class="spec-box"><span class="spec-label">Precio</span><span class="spec-value">$55.000.000 CLP</span></div>
+                        <div class="spec-box"><span class="spec-label">Gama</span><span class="spec-value">Gama Alta</span></div>
+                    </div>
+                </details>
+
+                <details class="vehicle-hint searchable-item">
+                    <summary class="vehicle-summary">Ford Mustang Mach-E</summary>
+                    <div class="vehicle-details">
+                        <div class="spec-box"><span class="spec-label">Modelo</span><span class="spec-value">Mustang Mach-E</span></div>
+                        <div class="spec-box"><span class="spec-label">Año</span><span class="spec-value">2024</span></div>
+                        <div class="spec-box"><span class="spec-label">Precio</span><span class="spec-value">$29.000.000 CLP</span></div>
+                        <div class="spec-box"><span class="spec-label">Gama</span><span class="spec-value">Gama Alta</span></div>
+                    </div>
+                </details>
+
+                <details class="vehicle-hint searchable-item">
+                    <summary class="vehicle-summary">Ford F-150 Lightning</summary>
+                    <div class="vehicle-details">
+                        <div class="spec-box"><span class="spec-label">Modelo</span><span class="spec-value">F-150 Lightning</span></div>
+                        <div class="spec-box"><span class="spec-label">Año</span><span class="spec-value">2024</span></div>
+                        <div class="spec-box"><span class="spec-label">Precio</span><span class="spec-value">$40.000.000 CLP</span></div>
+                        <div class="spec-box"><span class="spec-label">Gama</span><span class="spec-value">Gama Alta</span></div>
+                    </div>
+                </details>
+
+                <details class="vehicle-hint searchable-item">
+                    <summary class="vehicle-summary">Ford Bronco</summary>
+                    <div class="vehicle-details">
+                        <div class="spec-box"><span class="spec-label">Modelo</span><span class="spec-value">Bronco</span></div>
+                        <div class="spec-box"><span class="spec-label">Año</span><span class="spec-value">2021</span></div>
+                        <div class="spec-box"><span class="spec-label">Precio</span><span class="spec-value">$28.000.000 CLP</span></div>
+                        <div class="spec-box"><span class="spec-label">Gama</span><span class="spec-value">Gama Alta</span></div>
+                    </div>
+                </details>
+
+                <details class="vehicle-hint searchable-item">
+                    <summary class="vehicle-summary">Ford Explorer</summary>
+                    <div class="vehicle-details">
+                        <div class="spec-box"><span class="spec-label">Modelo</span><span class="spec-value">Explorer</span></div>
+                        <div class="spec-box"><span class="spec-label">Año</span><span class="spec-value">2016</span></div>
+                        <div class="spec-box"><span class="spec-label">Precio</span><span class="spec-value">$19.000.000 CLP</span></div>
+                        <div class="spec-box"><span class="spec-label">Gama</span><span class="spec-value">Gama Media</span></div>
+                    </div>
+                </details>
+
+                <details class="vehicle-hint searchable-item">
+                    <summary class="vehicle-summary">Ford Fusion</summary>
+                    <div class="vehicle-details">
+                        <div class="spec-box"><span class="spec-label">Modelo</span><span class="spec-value">Fusion</span></div>
+                        <div class="spec-box"><span class="spec-label">Año</span><span class="spec-value">2015</span></div>
+                        <div class="spec-box"><span class="spec-label">Precio</span><span class="spec-value">$22.000.000 CLP</span></div>
+                        <div class="spec-box"><span class="spec-label">Gama</span><span class="spec-value">Gama Media</span></div>
+                    </div>
+                </details>
+
+                <details class="vehicle-hint searchable-item">
+                    <summary class="vehicle-summary">Ford Hot Rod</summary>
+                    <div class="vehicle-details">
+                        <div class="spec-box"><span class="spec-label">Modelo</span><span class="spec-value">Hot Rod</span></div>
+                        <div class="spec-box"><span class="spec-label">Año</span><span class="spec-value">1950</span></div>
+                        <div class="spec-box"><span class="spec-label">Precio</span><span class="spec-value">$23.000.000 CLP</span></div>
+                        <div class="spec-box"><span class="spec-label">Gama</span><span class="spec-value">Gama Deportiva</span></div>
+                    </div>
+                </details>
+            </div>
+
+            <!-- ================= JEEP ================= -->
+            <div id="jeep" class="norm-section searchable-block" data-category="concesionario">
+                <div class="brand-header">
+                    <img src="https://cdn.worldvectorlogo.com/logos/jeep-6.svg" alt="Jeep Logo" class="brand-logo" style="filter: invert(1);">
+                    <h1>Jeep</h1>
+                    <p>Aventura sin límites, potencia y tracción total avanzada.</p>
+                </div>
+
+                <details class="vehicle-hint searchable-item">
+                    <summary class="vehicle-summary">Jeep Wrangler</summary>
+                    <div class="vehicle-details">
+                        <div class="spec-box"><span class="spec-label">Modelo</span><span class="spec-value">Wrangler</span></div>
+                        <div class="spec-box"><span class="spec-label">Año</span><span class="spec-value">2018</span></div>
+                        <div class="spec-box"><span class="spec-label">Precio</span><span class="spec-value">$15.000.000 CLP</span></div>
+                        <div class="spec-box"><span class="spec-label">Gama</span><span class="spec-value">Gama Alta</span></div>
+                    </div>
+                </details>
+
+                <details class="vehicle-hint searchable-item">
+                    <summary class="vehicle-summary">Jeep Grand Cherokee</summary>
+                    <div class="vehicle-details">
+                        <div class="spec-box"><span class="spec-label">Modelo</span><span class="spec-value">Grand Cheeroke</span></div>
+                        <div class="spec-box"><span class="spec-label">Año</span><span class="spec-value">2011</span></div>
+                        <div class="spec-box"><span class="spec-label">Precio</span><span class="spec-value">$8.900.000 CLP</span></div>
+                        <div class="spec-box"><span class="spec-label">Gama</span><span class="spec-value">Gama Media</span></div>
+                    </div>
+                </details>
+
+                <details class="vehicle-hint searchable-item">
+                    <summary class="vehicle-summary">Jeep Grand Cherokee WK2</summary>
+                    <div class="vehicle-details">
+                        <div class="spec-box"><span class="spec-label">Modelo</span><span class="spec-value">Grand Cheeroke WK2</span></div>
+                        <div class="spec-box"><span class="spec-label">Año</span><span class="spec-value">2020</span></div>
+                        <div class="spec-box"><span class="spec-label">Precio</span><span class="spec-value">$45.000.000 CLP</span></div>
+                        <div class="spec-box"><span class="spec-label">Gama</span><span class="spec-value">Gama Alta</span></div>
+                    </div>
+                </details>
+            </div>
+
+            <!-- ================= DODGE & RAM ================= -->
+            <div id="dodge" class="norm-section searchable-block" data-category="concesionario">
+                <div class="brand-header">
+                    <img src="https://cdn.worldvectorlogo.com/logos/dodge-7.svg" alt="Dodge Logo" class="brand-logo" style="filter: invert(1);">
+                    <h1>Dodge & RAM</h1>
+                    <p>Potencia americana extrema y alto rendimiento.</p>
+                </div>
+
+                <details class="vehicle-hint searchable-item">
+                    <summary class="vehicle-summary">Dodge Charger</summary>
+                    <div class="vehicle-details">
+                        <div class="spec-box"><span class="spec-label">Modelo</span><span class="spec-value">Charger</span></div>
+                        <div class="spec-box"><span class="spec-label">Año</span><span class="spec-value">2011</span></div>
+                        <div class="spec-box"><span class="spec-label">Precio</span><span class="spec-value">$28.000.000 CLP</span></div>
+                        <div class="spec-box"><span class="spec-label">Gama</span><span class="spec-value">Gama Deportiva</span></div>
+                    </div>
+                </details>
+
+                <details class="vehicle-hint searchable-item">
+                    <summary class="vehicle-summary">Dodge Challenger</summary>
+                    <div class="vehicle-details">
+                        <div class="spec-box"><span class="spec-label">Modelo</span><span class="spec-value">Challenger</span></div>
+                        <div class="spec-box"><span class="spec-label">Año</span><span class="spec-value">2009</span></div>
+                        <div class="spec-box"><span class="spec-label">Precio</span><span class="spec-value">$25.000.000 CLP</span></div>
+                        <div class="spec-box"><span class="spec-label">Gama</span><span class="spec-value">Gama Alta</span></div>
+                    </div>
+                </details>
+
+                <details class="vehicle-hint searchable-item">
+                    <summary class="vehicle-summary">Dodge Challenger Hellcat Widebody</summary>
+                    <div class="vehicle-details">
+                        <div class="spec-box"><span class="spec-label">Modelo</span><span class="spec-value">Challenger Hellcat Widebody</span></div>
+                        <div class="spec-box"><span class="spec-label">Año</span><span class="spec-value">2020</span></div>
+                        <div class="spec-box"><span class="spec-label">Precio</span><span class="spec-value">$50.000.000 CLP</span></div>
+                        <div class="spec-box"><span class="spec-label">Gama</span><span class="spec-value">Gama Alta</span></div>
+                    </div>
+                </details>
+
+                <details class="vehicle-hint searchable-item">
+                    <summary class="vehicle-summary">Dodge Challenger SRT Hellcat</summary>
+                    <div class="vehicle-details">
+                        <div class="spec-box"><span class="spec-label">Modelo</span><span class="spec-value">Challenger SRT Hellcat</span></div>
+                        <div class="spec-box"><span class="spec-label">Año</span><span class="spec-value">2022</span></div>
+                        <div class="spec-box"><span class="spec-label">Precio</span><span class="spec-value">$55.000.000 CLP</span></div>
+                        <div class="spec-box"><span class="spec-label">Gama</span><span class="spec-value">Gama Alta</span></div>
+                    </div>
+                </details>
+
+                <details class="vehicle-hint searchable-item">
+                    <summary class="vehicle-summary">Dodge Challenger SRT Hellcat Redeye Widebody</summary>
+                    <div class="vehicle-details">
+                        <div class="spec-box"><span class="spec-label">Modelo</span><span class="spec-value">Challenger SRT Hellcat Redeye Widebody</span></div>
+                        <div class="spec-box"><span class="spec-label">Año</span><span class="spec-value">2022</span></div>
+                        <div class="spec-box"><span class="spec-label">Precio</span><span class="spec-value">$62.000.000 CLP</span></div>
+                        <div class="spec-box"><span class="spec-label">Gama</span><span class="spec-value">Gama Alta</span></div>
+                    </div>
+                </details>
+
+                <details class="vehicle-hint searchable-item">
+                    <summary class="vehicle-summary">Dodge Durango</summary>
+                    <div class="vehicle-details">
+                        <div class="spec-box"><span class="spec-label">Modelo</span><span class="spec-value">Durango</span></div>
+                        <div class="spec-box"><span class="spec-label">Año</span><span class="spec-value">2018</span></div>
+                        <div class="spec-box"><span class="spec-label">Precio</span><span class="spec-value">$67.000.000 CLP</span></div>
+                        <div class="spec-box"><span class="spec-label">Gama</span><span class="spec-value">Gama Alta</span></div>
+                    </div>
+                </details>
+
+                <details class="vehicle-hint searchable-item">
+                    <summary class="vehicle-summary">RAM 1500</summary>
+                    <div class="vehicle-details">
+                        <div class="spec-box"><span class="spec-label">Modelo</span><span class="spec-value">RAM 1500</span></div>
+                        <div class="spec-box"><span class="spec-label">Año</span><span class="spec-value">2009</span></div>
+                        <div class="spec-box"><span class="spec-label">Precio</span><span class="spec-value">$20.000.000 CLP</span></div>
+                        <div class="spec-box"><span class="spec-label">Gama</span><span class="spec-value">Gama Alta</span></div>
+                    </div>
+                </details>
+
+                <details class="vehicle-hint searchable-item">
+                    <summary class="vehicle-summary">RAM TRX</summary>
+                    <div class="vehicle-details">
+                        <div class="spec-box"><span class="spec-label">Modelo</span><span class="spec-value">RAM TXR</span></div>
+                        <div class="spec-box"><span class="spec-label">Año</span><span class="spec-value">2022</span></div>
+                        <div class="spec-box"><span class="spec-label">Precio</span><span class="spec-value">$55.000.000 CLP</span></div>
+                        <div class="spec-box"><span class="spec-label">Gama</span><span class="spec-value">Gama Alta</span></div>
+                    </div>
+                </details>
+            </div>
+
+            <!-- ================= TOYOTA ================= -->
+            <div id="toyota" class="norm-section searchable-block" data-category="concesionario">
+                <div class="brand-header">
+                    <img src="https://cdn.worldvectorlogo.com/logos/toyota-1.svg" alt="Toyota Logo" class="brand-logo" style="filter: invert(1);">
+                    <h1>Toyota</h1>
+                    <p>Fiabilidad, durabilidad y rendimiento urbano e off-road.</p>
+                </div>
+
+                <details class="vehicle-hint searchable-item">
+                    <summary class="vehicle-summary">Toyota Prius</summary>
+                    <div class="vehicle-details">
+                        <div class="spec-box"><span class="spec-label">Modelo</span><span class="spec-value">Preius</span></div>
+                        <div class="spec-box"><span class="spec-label">Año</span><span class="spec-value">2009</span></div>
+                        <div class="spec-box"><span class="spec-label">Precio</span><span class="spec-value">$9.500.000 CLP</span></div>
+                        <div class="spec-box"><span class="spec-label">Gama</span><span class="spec-value">Gama Media</span></div>
+                    </div>
+                </details>
+
+                <details class="vehicle-hint searchable-item">
+                    <summary class="vehicle-summary">Toyota Tacoma</summary>
+                    <div class="vehicle-details">
+                        <div class="spec-box"><span class="spec-label">Modelo</span><span class="spec-value">Tocoma</span></div>
+                        <div class="spec-box"><span class="spec-label">Año</span><span class="spec-value">1995</span></div>
+                        <div class="spec-box"><span class="spec-label">Precio</span><span class="spec-value">$7.800.000 CLP</span></div>
+                        <div class="spec-box"><span class="spec-label">Gama</span><span class="spec-value">Gama Baja</span></div>
+                    </div>
+                </details>
+
+                <details class="vehicle-hint searchable-item">
+                    <summary class="vehicle-summary">Toyota Tundra</summary>
+                    <div class="vehicle-details">
+                        <div class="spec-box"><span class="spec-label">Modelo</span><span class="spec-value">Tundra</span></div>
+                        <div class="spec-box"><span class="spec-label">Año</span><span class="spec-value">2022</span></div>
+                        <div class="spec-box"><span class="spec-label">Precio</span><span class="spec-value">$24.000.000 CLP</span></div>
+                        <div class="spec-box"><span class="spec-label">Gama</span><span class="spec-value">Gama Alta</span></div>
+                    </div>
+                </details>
+
+                <details class="vehicle-hint searchable-item">
+                    <summary class="vehicle-summary">Toyota 4Runner TRD</summary>
+                    <div class="vehicle-details">
+                        <div class="spec-box"><span class="spec-label">Modelo</span><span class="spec-value">4Runner TRD</span></div>
+                        <div class="spec-box"><span class="spec-label">Año</span><span class="spec-value">2020</span></div>
+                        <div class="spec-box"><span class="spec-label">Precio</span><span class="spec-value">$26.000.000 CLP</span></div>
+                        <div class="spec-box"><span class="spec-label">Gama</span><span class="spec-value">Gama Alta</span></div>
+                    </div>
+                </details>
+            </div>
+
+            <!-- ================= CADILLAC ================= -->
+            <div id="cadillac" class="norm-section searchable-block" data-category="concesionario">
+                <div class="brand-header">
+                    <img src="https://cdn.worldvectorlogo.com/logos/cadillac-6.svg" alt="Cadillac Logo" class="brand-logo" style="filter: invert(1);">
+                    <h1>Cadillac</h1>
+                    <p>Lujo ejecutivo y máximo confort americano.</p>
+                </div>
+
+                <details class="vehicle-hint searchable-item">
+                    <summary class="vehicle-summary">Cadillac Escalade</summary>
+                    <div class="vehicle-details">
+                        <div class="spec-box"><span class="spec-label">Modelo</span><span class="spec-value">Escalade</span></div>
+                        <div class="spec-box"><span class="spec-label">Año</span><span class="spec-value">2020</span></div>
+                        <div class="spec-box"><span class="spec-label">Precio</span><span class="spec-value">$45.000.000 CLP</span></div>
+                        <div class="spec-box"><span class="spec-label">Gama</span><span class="spec-value">Gama Alta</span></div>
+                    </div>
+                </details>
+
+                <details class="vehicle-hint searchable-item">
+                    <summary class="vehicle-summary">Cadillac CT5-V Blackwing</summary>
+                    <div class="vehicle-details">
+                        <div class="spec-box"><span class="spec-label">Modelo</span><span class="spec-value">CT5-V Blackwing</span></div>
+                        <div class="spec-box"><span class="spec-label">Año</span><span class="spec-value">2023</span></div>
+                        <div class="spec-box"><span class="spec-label">Precio</span><span class="spec-value">$40.000.000 CLP</span></div>
+                        <div class="spec-box"><span class="spec-label">Gama</span><span class="spec-value">Gama Alta</span></div>
+                    </div>
+                </details>
+            </div>
+
+            <!-- ================= PORSCHE ================= -->
+            <div id="porsche" class="norm-section searchable-block" data-category="concesionario">
+                <div class="brand-header">
+                    <img src="https://cdn.worldvectorlogo.com/logos/porsche-6.svg" alt="Porsche Logo" class="brand-logo" style="filter: invert(1);">
+                    <h1>Porsche</h1>
+                    <p>Ingeniería de alta gama, lujo y velocidad alemana.</p>
+                </div>
+
+                <details class="vehicle-hint searchable-item">
+                    <summary class="vehicle-summary">Porsche Cayenne Turbo</summary>
+                    <div class="vehicle-details">
+                        <div class="spec-box"><span class="spec-label">Modelo</span><span class="spec-value">Cayenne Turbo</span></div>
+                        <div class="spec-box"><span class="spec-label">Año</span><span class="spec-value">2022</span></div>
+                        <div class="spec-box"><span class="spec-label">Precio</span><span class="spec-value">$45.000.000 CLP</span></div>
+                        <div class="spec-box"><span class="spec-label">Gama</span><span class="spec-value">Gama Alta</span></div>
+                    </div>
+                </details>
+
+                <details class="vehicle-hint searchable-item">
+                    <summary class="vehicle-summary">Porsche Panamera</summary>
+                    <div class="vehicle-details">
+                        <div class="spec-box"><span class="spec-label">Modelo</span><span class="spec-value">Panamera</span></div>
+                        <div class="spec-box"><span class="spec-label">Año</span><span class="spec-value">2022</span></div>
+                        <div class="spec-box"><span class="spec-label">Precio</span><span class="spec-value">$35.000.000 CLP</span></div>
+                        <div class="spec-box"><span class="spec-label">Gama</span><span class="spec-value">Gama Alta</span></div>
+                    </div>
+                </details>
+            </div>
+
+            <!-- ================= BMW ================= -->
+            <div id="bmw" class="norm-section searchable-block" data-category="concesionario">
+                <div class="brand-header">
+                    <img src="https://cdn.worldvectorlogo.com/logos/bmw-20.svg" alt="BMW Logo" class="brand-logo" style="filter: invert(1);">
+                    <h1>BMW</h1>
+                    <p>El placer de conducir con tecnología y potencia superior.</p>
+                </div>
+
+                <details class="vehicle-hint searchable-item">
+                    <summary class="vehicle-summary">BMW X5</summary>
+                    <div class="vehicle-details">
+                        <div class="spec-box"><span class="spec-label">Modelo</span><span class="spec-value">X5</span></div>
+                        <div class="spec-box"><span class="spec-label">Año</span><span class="spec-value">2020</span></div>
+                        <div class="spec-box"><span class="spec-label">Precio</span><span class="spec-value">$55.000.000 CLP</span></div>
+                        <div class="spec-box"><span class="spec-label">Gama</span><span class="spec-value">Gama Alta</span></div>
+                    </div>
+                </details>
+
+                <details class="vehicle-hint searchable-item">
+                    <summary class="vehicle-summary">BMW Z4M</summary>
+                    <div class="vehicle-details">
+                        <div class="spec-box"><span class="spec-label">Modelo</span><span class="spec-value">Z4M</span></div>
+                        <div class="spec-box"><span class="spec-label">Año</span><span class="spec-value">2023</span></div>
+                        <div class="spec-box"><span class="spec-label">Precio</span><span class="spec-value">$40.000.000 CLP</span></div>
+                        <div class="spec-box"><span class="spec-label">Gama</span><span class="spec-value">Gama Alta</span></div>
+                    </div>
+                </details>
+            </div>
+
+            <!-- ================= MERCEDES-BENZ ================= -->
+            <div id="mercedes" class="norm-section searchable-block" data-category="concesionario">
+                <div class="brand-header">
+                    <img src="https://cdn.worldvectorlogo.com/logos/mercedes-benz-9.svg" alt="Mercedes Logo" class="brand-logo" style="filter: invert(1);">
+                    <h1>Mercedes-Benz</h1>
+                    <p>Lujo incomparable y prestaciones de primer nivel.</p>
+                </div>
+
+                <details class="vehicle-hint searchable-item">
+                    <summary class="vehicle-summary">Mercedes-Benz AMG GT-Glass</summary>
+                    <div class="vehicle-details">
+                        <div class="spec-box"><span class="spec-label">Modelo</span><span class="spec-value">AMG GT-Glass</span></div>
+                        <div class="spec-box"><span class="spec-label">Año</span><span class="spec-value">2021</span></div>
+                        <div class="spec-box"><span class="spec-label">Precio</span><span class="spec-value">$40.000.000 CLP</span></div>
+                        <div class="spec-box"><span class="spec-label">Gama</span><span class="spec-value">Gama Alta</span></div>
+                    </div>
+                </details>
+
+                <details class="vehicle-hint searchable-item">
+                    <summary class="vehicle-summary">Mercedes-Benz G-Wagon G63</summary>
+                    <div class="vehicle-details">
+                        <div class="spec-box"><span class="spec-label">Modelo</span><span class="spec-value">G-Wagon G63</span></div>
+                        <div class="spec-box"><span class="spec-label">Año</span><span class="spec-value">2022</span></div>
+                        <div class="spec-box"><span class="spec-label">Precio</span><span class="spec-value">$35.000.000 CLP</span></div>
+                        <div class="spec-box"><span class="spec-label">Gama</span><span class="spec-value">Gama Alta</span></div>
+                    </div>
+                </details>
+            </div>
+
+            <!-- ================= AUDI ================= -->
+            <div id="audi" class="norm-section searchable-block" data-category="concesionario">
+                <div class="brand-header">
+                    <img src="https://cdn.worldvectorlogo.com/logos/audi-13.svg" alt="Audi Logo" class="brand-logo" style="filter: invert(1);">
+                    <h1>Audi</h1>
+                    <p>Lujo, elegancia y alto desempeño alemán.</p>
+                </div>
+
+                <details class="vehicle-hint searchable-item">
+                    <summary class="vehicle-summary">Audi Q8</summary>
+                    <div class="vehicle-details">
+                        <div class="spec-box"><span class="spec-label">Modelo</span><span class="spec-value">Q8</span></div>
+                        <div class="spec-box"><span class="spec-label">Año</span><span class="spec-value">2020</span></div>
+                        <div class="spec-box"><span class="spec-label">Precio</span><span class="spec-value">$55.000.000 CLP</span></div>
+                        <div class="spec-box"><span class="spec-label">Gama</span><span class="spec-value">Gama Alta</span></div>
+                    </div>
+                </details>
+
+                <details class="vehicle-hint searchable-item">
+                    <summary class="vehicle-summary">Audi SQ8 e-tron Premium Plus</summary>
+                    <div class="vehicle-details">
+                        <div class="spec-box"><span class="spec-label">Modelo</span><span class="spec-value">SQ8 e-tron Premium Plus</span></div>
+                        <div class="spec-box"><span class="spec-label">Año</span><span class="spec-value">2024</span></div>
+                        <div class="spec-box"><span class="spec-label">Precio</span><span class="spec-value">$60.000.000 CLP</span></div>
+                        <div class="spec-box"><span class="spec-label">Gama</span><span class="spec-value">Gama Alta</span></div>
+                    </div>
+                </details>
+            </div>
+
+            <!-- ================= TESLA & HÍBRIDOS ================= -->
+            <div id="tesla" class="norm-section searchable-block" data-category="concesionario">
+                <div class="brand-header">
+                    <img src="https://cdn.worldvectorlogo.com/logos/tesla-9.svg" alt="Tesla Logo" class="brand-logo" style="filter: invert(1);">
+                    <h1>Tesla & Híbridos</h1>
+                    <p>Innovación eléctrica y diseño futurista.</p>
+                </div>
+
+                <details class="vehicle-hint searchable-item">
+                    <summary class="vehicle-summary">BMW i8 Roadster</summary>
+                    <div class="vehicle-details">
+                        <div class="spec-box"><span class="spec-label">Modelo</span><span class="spec-value">i8 Roadster</span></div>
+                        <div class="spec-box"><span class="spec-label">Año</span><span class="spec-value">2018</span></div>
+                        <div class="spec-box"><span class="spec-label">Precio</span><span class="spec-value">$50.000.000 CLP</span></div>
+                        <div class="spec-box"><span class="spec-label">Gama</span><span class="spec-value">Gama Alta</span></div>
+                    </div>
+                </details>
+
+                <details class="vehicle-hint searchable-item">
+                    <summary class="vehicle-summary">Tesla Model Y</summary>
+                    <div class="vehicle-details">
+                        <div class="spec-box"><span class="spec-label">Modelo</span><span class="spec-value">Model Y</span></div>
+                        <div class="spec-box"><span class="spec-label">Año</span><span class="spec-value">2020</span></div>
+                        <div class="spec-box"><span class="spec-label">Precio</span><span class="spec-value">$25.000.000 CLP</span></div>
+                        <div class="spec-box"><span class="spec-label">Gama</span><span class="spec-value">Gama Alta</span></div>
+                    </div>
+                </details>
+            </div>
+
+            <!-- ================= HUMMER ================= -->
+            <div id="hummer" class="norm-section searchable-block" data-category="concesionario">
+                <div class="brand-header">
+                    <img src="https://cdn.worldvectorlogo.com/logos/hummer-3.svg" alt="Hummer Logo" class="brand-logo" style="filter: invert(1);">
+                    <h1>Hummer</h1>
+                    <p>Vehículos todoterreno de gran presencia y robustez.</p>
+                </div>
+
+                <details class="vehicle-hint searchable-item">
+                    <summary class="vehicle-summary">Hummer H2</summary>
+                    <div class="vehicle-details">
+                        <div class="spec-box"><span class="spec-label">Modelo</span><span class="spec-value">Hummer</span></div>
+                        <div class="spec-box"><span class="spec-label">Año</span><span class="spec-value">2005</span></div>
+                        <div class="spec-box"><span class="spec-label">Precio</span><span class="spec-value">$10.000.000 CLP</span></div>
+                        <div class="spec-box"><span class="spec-label">Gama</span><span class="spec-value">Gama Alta</span></div>
+                    </div>
+                </details>
+
+                <details class="vehicle-hint searchable-item">
+                    <summary class="vehicle-summary">Hummer H3</summary>
+                    <div class="vehicle-details">
+                        <div class="spec-box"><span class="spec-label">Modelo</span><span class="spec-value">Hummer H3</span></div>
+                        <div class="spec-box"><span class="spec-label">Año</span><span class="spec-value">2005</span></div>
+                        <div class="spec-box"><span class="spec-label">Precio</span><span class="spec-value">$12.000.000 CLP</span></div>
+                        <div class="spec-box"><span class="spec-label">Gama</span><span class="spec-value">Gama Media</span></div>
+                    </div>
+                </details>
+            </div>
+
+            <!-- ================= NISSAN ================= -->
+            <div id="nissan" class="norm-section searchable-block" data-category="concesionario">
+                <div class="brand-header">
+                    <img src="https://cdn.worldvectorlogo.com/logos/nissan-6.svg" alt="Nissan Logo" class="brand-logo" style="filter: invert(1);">
+                    <h1>Nissan</h1>
+                    <p>Estilo urbano, confort y tecnología avanzada.</p>
+                </div>
+
+                <details class="vehicle-hint searchable-item">
+                    <summary class="vehicle-summary">Nissan Altima</summary>
+                    <div class="vehicle-details">
+                        <div class="spec-box"><span class="spec-label">Modelo</span><span class="spec-value">Altima</span></div>
+                        <div class="spec-box"><span class="spec-label">Año</span><span class="spec-value">2020</span></div>
+                        <div class="spec-box"><span class="spec-label">Precio</span><span class="spec-value">$27.000.000 CLP</span></div>
+                        <div class="spec-box"><span class="spec-label">Gama</span><span class="spec-value">Gama Media</span></div>
+                    </div>
+                </details>
+            </div>
+
+            <!-- ================= HONDA ================= -->
+            <div id="honda" class="norm-section searchable-block" data-category="concesionario">
+                <div class="brand-header">
+                    <img src="https://cdn.worldvectorlogo.com/logos/honda-7.svg" alt="Honda Logo" class="brand-logo" style="filter: invert(1);">
+                    <h1>Honda</h1>
+                    <p>Eficiencia, velocidad y diseño aerodinámico.</p>
+                </div>
+
+                <details class="vehicle-hint searchable-item">
+                    <summary class="vehicle-summary">Honda Civic</summary>
+                    <div class="vehicle-details">
+                        <div class="spec-box"><span class="spec-label">Modelo</span><span class="spec-value">Civic</span></div>
+                        <div class="spec-box"><span class="spec-label">Año</span><span class="spec-value">2014</span></div>
+                        <div class="spec-box"><span class="spec-label">Precio</span><span class="spec-value">$13.000.000 CLP</span></div>
+                        <div class="spec-box"><span class="spec-label">Gama</span><span class="spec-value">Gama Deportiva</span></div>
+                    </div>
+                </details>
             </div>
         </content-area>
     </div>
 
+    <!-- Script de navegación y sidebar dinámico -->
     <script>
         const dropdownMenu = document.getElementById('dropdownMenu');
         const dropBtn = document.getElementById('dropBtn');
@@ -129,9 +972,23 @@
         const sidebarMenu = document.getElementById('sidebarMenu');
 
         const catData = {
-            titulo: "Concesionario",
+            titulo: "Catálogo de Vehículos",
             items: [
-                { target: "concesionario-main", texto: "Catálogo General" }
+                { target: "deportivos", texto: "Gama Deportiva & Hypercars" },
+                { target: "chevrolet", texto: "Chevrolet" },
+                { target: "ford", texto: "Ford" },
+                { target: "jeep", texto: "Jeep" },
+                { target: "dodge", texto: "Dodge & RAM" },
+                { target: "toyota", texto: "Toyota" },
+                { target: "cadillac", texto: "Cadillac" },
+                { target: "porsche", texto: "Porsche" },
+                { target: "bmw", texto: "BMW" },
+                { target: "mercedes", texto: "Mercedes-Benz" },
+                { target: "audi", texto: "Audi" },
+                { target: "tesla", texto: "Tesla & Híbridos" },
+                { target: "hummer", texto: "Hummer" },
+                { target: "nissan", texto: "Nissan" },
+                { target: "honda", texto: "Honda" }
             ]
         };
 
