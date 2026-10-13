@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Normativa - Altamar RolePlay</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <style>
         .norm-section { display: none; }
         .norm-section.active { display: block; }
@@ -111,8 +111,9 @@
                 </div>
             </li>
 
-            <li><a href="#">Tienda</a></li>
-            <li><a href="#">Equipo</a></li>
+            <!-- Redirecciones actualizadas -->
+            <li><a href="tienda.html">Tienda</a></li>
+            <li><a href="equipo.html">Equipo</a></li>
             
             <!-- Botón Blanco PDI - CARAB -->
             <li><a href="#" id="btnPdiCarab" class="btn-policial">PDI - CARAB</a></li>
@@ -195,7 +196,7 @@
 
                 <div class="concept-item searchable-item">
                     <h3>Micrófono</h3>
-                    <p>Для rolear es importante que mantengas micrófono. En caso de que no lo tengas no podrás rolear en el servidor.</p>
+                    <p>Para rolear es importante que mantengas micrófono. En caso de que no lo tengas no podrás rolear en el servidor.</p>
                 </div>
             </div>
 
@@ -448,7 +449,7 @@
 
                 <div class="concept-item searchable-item">
                     <h3>CK Criminal</h3>
-                    <p>Los líderes de organizaciones ilegales pueden reservarse el derecho a realizar CK a uno de sus miembros siempre que lo vean necesario. In dicho caso, el CK deberá ser aceptado si aparece especificado en la normativa de la organización, lo cual implica que los miembros aceptan su posible muerte anticipadamente al ingresar. Esta especie de contrato debe estar reflejado en el propio hilo del grupo y, de este modo, será válido a efectos administrativos. De no ser así, no se podrá realizar CK por esta vía.</p>
+                    <p>Los líderes de organizaciones ilegales pueden reservarse el derecho a realizar CK a uno de sus miembros siempre que lo vean necesario. En dicho caso, el CK deberá ser aceptado si aparece especificado en la normativa de la organización, lo cual implica que los miembros aceptan su posible muerte anticipadamente al ingresar. Esta especie de contrato debe estar reflejado en el propio hilo del grupo y, de este modo, será válido a efectos administrativos. De no ser así, no se podrá realizar CK por esta vía.</p>
                 </div>
 
                 <div class="concept-item searchable-item">
@@ -627,8 +628,8 @@
             try {
                 // Roles permitidos
                 const rolesPermitidos = ['1528268801374814329', '1528268800577900654'];
-                // ID del servidor de Altamar RolePlay (debe configurarse el ID de tu server de Discord donde están los roles)
-                const GUILD_ID = '1138972937727250472'; // Cambia esto por el ID real de tu servidor de Discord
+                // ID del servidor de Altamar RolePlay
+                const GUILD_ID = '1138972937727250472';
 
                 // 2. Consultar los datos del usuario en el servidor de Discord
                 const response = await fetch(`https://discord.com/api/users/@me/guilds/${GUILD_ID}/member`, {
@@ -649,7 +650,6 @@
                 const tieneAcceso = userRoles.some(roleId => rolesPermitidos.includes(roleId));
 
                 if (tieneAcceso) {
-                    // Si tiene el rol, redirige al panel policial
                     window.location.href = 'policial.html';
                 } else {
                     alert('Acceso denegado: No posees el rol requerido de PDI o Carabineros.');
